@@ -55,8 +55,8 @@ function Navbar() {
                 <li className="navbar__item">
                     <Link to="/explore">Explore</Link>
                 </li>
-                { Theme==="light" ? <button onClick={setDarkMode} class="btn btn--secondary btn--icon moon padding--medium"><i class="fas fa-moon text--medium"></i><span>Dark Mode</span></button> :
-                <button onClick={setLightMode} class="btn btn--secondary btn--icon sun padding--medium"><i class="fas fa-sun text--medium"></i><span>Light Mode</span></button> }
+                { Theme==="light" ? <button onClick={setDarkMode} className="btn btn--secondary btn--icon moon padding--medium"><i className="fas fa-moon text--medium"></i><span>Dark Mode</span></button> :
+                <button onClick={setLightMode} className="btn btn--secondary btn--icon sun padding--medium"><i className="fas fa-sun text--medium"></i><span>Light Mode</span></button> }
             </ul>
         </div>
         <div className="mobile__search__container">
