@@ -1,0 +1,7 @@
+.quiz--card .card__image--container{
+    height: 28rem;
+}
+
+.quiz--card .card__title{
+    color: var(--text-clr-secondary);
+}
