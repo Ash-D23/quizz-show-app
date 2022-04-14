@@ -7,7 +7,7 @@ export const useAuth = () => {
     
     const [user, setuser] = useLocalStorage("user", null);
 
-    const signin = async (data) => {
+    const signIn = async (data) => {
         try {
             const res = await auth.signInWithEmailAndPassword(data.email, data.password)
             const usersRef = db.ref('/users');
@@ -26,7 +26,7 @@ export const useAuth = () => {
         }
     };
 
-    const signup = async (data) => {
+    const signUp = async (data) => {
         try {
             const res = await auth.createUserWithEmailAndPassword(data.email, data.password)
 
@@ -48,7 +48,7 @@ export const useAuth = () => {
         }
     };
 
-    const signout = async () => {
+    const signOut = async () => {
         try{
             await auth.signOut()
             setuser(null);
@@ -59,5 +59,5 @@ export const useAuth = () => {
         }
     };
 
-    return { user, setuser, signin, signup, signout };
+    return { user, setuser, signIn, signUp, signOut };
 };

@@ -4,11 +4,11 @@ import { useAuthContext } from '../../Context'
 
 function SignUp() {
 
-  const { signup } = useAuthContext()
+  const { signUp } = useAuthContext()
   const [email, setemail] = useState('');
   const [password, setpassword] = useState('')
   const [confirmpassword, setconfirmpassword] = useState('')
-  const [errorvalues, seterrorvalues] = useState({})
+  const [errorValues, seterrorValues] = useState({})
 
   const validateSubmit = () => {
     const errors = {}
@@ -36,13 +36,13 @@ function SignUp() {
   const signUpHandler = () => {
     const errors = validateSubmit()
     if(Object.keys(errors).length === 0){
-      signup({ email, password})
+      signUp({ email, password})
       setemail('')
       setpassword('')
       setconfirmpassword('')
-      seterrorvalues('')
+      seterrorValues('')
     }else{
-      seterrorvalues(errors)
+      seterrorValues(errors)
     }
     
   }
@@ -54,17 +54,17 @@ function SignUp() {
           <div className="auth__section">
               <label className="auth-label form-label--required text--medium">Enter Email</label>
               <input value={email} onChange={(e)=> setemail(e.target.value)} type="text" className="form-field margin-tb--small" placeholder="abc@example.com"/>
-              <span className="error--message">{errorvalues.email}</span>
+              <span className="error--message">{errorValues.email}</span>
           </div>
           <div className="auth__section">
               <label className="auth-label form-label--required text--medium">Enter Password</label>
               <input value={password} onChange={(e)=> setpassword(e.target.value)} type="password" className="form-field margin-tb--small" placeholder="Password"/>
-              <span className="error--message">{errorvalues.password}</span>
+              <span className="error--message">{errorValues.password}</span>
           </div>
           <div className="auth__section">
               <label className="auth-label form-label--required text--medium">Confirm Password</label>
               <input value={confirmpassword} onChange={(e)=> setconfirmpassword(e.target.value)} type="password" className="form-field margin-tb--small" placeholder="Password"/>
-              <span className="error--message">{errorvalues.confirmpassword}</span>
+              <span className="error--message">{errorValues.confirmpassword}</span>
           </div>
           <div className="auth__description">
               <input type="checkbox" className="form-checkbox" /> 
