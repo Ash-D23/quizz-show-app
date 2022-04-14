@@ -8,7 +8,7 @@ function CategoryCard({ category: {id, imgurl, name}}) {
   return (
     <div onClick={()=> navigate('/explore?category='+id)} className="category--card container--relative">
         <div className="category--image">
-          <img src={imgurl} />
+          <img src={imgurl} alt="category" />
         </div>
         <h3 className="category--title">{name}</h3>
         <div className="category--overlay shadow--bottom">
@@ -17,4 +17,4 @@ function CategoryCard({ category: {id, imgurl, name}}) {
   )
 }
 
-export default CategoryCard
+export { CategoryCard }

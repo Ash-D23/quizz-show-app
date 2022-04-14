@@ -2,7 +2,7 @@ import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import { Navbar, Footer } from './Components';
 import { HomePage, AllQuizPage, QuizGamePage, Dashboard, UserProfile, Login, SignUp } from './Pages';
 import './App.css';
-import { useAuthContext } from './Context/AuthContext/AuthContext';
+import { useAuthContext } from './Context';
 import RequireAuth from './hooks/RequireAuth';
 
 import 'react-toastify/dist/ReactToastify.css';

@@ -2,9 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';
-import { AuthProvider } from './Context/AuthContext/AuthContext';
-import { ThemeProvider } from './Context/ThemeContext/ThemeContext';
-
+import { AuthProvider, ThemeProvider } from './Context';
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>

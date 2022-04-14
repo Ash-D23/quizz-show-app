@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { useAuthContext } from '../../Context/AuthContext/AuthContext';
-import { useTheme } from '../../Context/ThemeContext/ThemeContext';
+import { useAuthContext, useTheme } from '../../Context';
 import './Navbar.css'
 
 function Navbar() {
