@@ -41,7 +41,7 @@ function Login() {
   }
 
   const loginwithtesthandler = () => {
-    signin({ email: 'adarshbalika@gmail.com', password: 'adarshbalika'})
+    signin({ email: 'test@test.com', password: 'test123'})
     setemail('')
     setpassword('')
   }

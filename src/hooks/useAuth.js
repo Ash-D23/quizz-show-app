@@ -1,6 +1,7 @@
 import { useLocalStorage } from "./LocalStorage";
 import { auth } from "../firebase"
 import { db } from '../firebase';
+import { toasterror, toastsuccess } from "../Utilities/ToastMessage";
 
 export const useAuth = () => {
     
@@ -17,8 +18,11 @@ export const useAuth = () => {
 
                 setuser(data[key])
             });
+
+            toastsuccess("Login Succesfull")
         } catch (err) {
             console.error(err);
+            toasterror("An Error Occuered")
         }
     };
 
@@ -37,8 +41,10 @@ export const useAuth = () => {
 
             await usersRef.push().set(item)
             setuser(item)
+            toastsuccess("SignUp Succesfull")
         } catch (err) {
             console.error(err);
+            toasterror("An Error Occuered")
         }
     };
 
@@ -46,8 +52,10 @@ export const useAuth = () => {
         try{
             await auth.signOut()
             setuser(null);
+            toastsuccess("Logout Succesfull")
         }catch(err){
             console.error(err)
+            toasterror("An Error Occuered")
         }
     };
 

@@ -1,24 +1,43 @@
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import { Navbar, Footer } from './Components';
 import { HomePage, AllQuizPage, QuizGamePage, Dashboard, UserProfile, Login, SignUp } from './Pages';
 import './App.css';
+import { useAuthContext } from './Context/AuthContext/AuthContext';
+import RequireAuth from './hooks/RequireAuth';
+
+import 'react-toastify/dist/ReactToastify.css';
+import "./App.css";
+import { ToastContainer } from 'react-toastify';
 
 function App() {
+
+  const { user } = useAuthContext()
+
+  const location = useLocation()
+
+  const pathName = location.state?.from || '/'
   
   return (
-    <div>
+    <>
       <Navbar />
       <Routes>
         <Route path='/' element={<HomePage />} />
+        
         <Route path='/explore' element={<AllQuizPage />} />
-        <Route path='/quizgame/:id' element={<QuizGamePage />} />
-        <Route path='/dashboard' element={<Dashboard />} />
-        <Route path='/profile' element={<UserProfile />} />
-        <Route path='/login' element={<Login />} />
-        <Route path='/signup' element={<SignUp />} />
+
+        <Route path='/quizgame/:id' element={<RequireAuth><QuizGamePage /></RequireAuth>} />
+
+        <Route path='/dashboard' element={<RequireAuth><Dashboard /></RequireAuth>} />
+
+        <Route path='/profile' element={<RequireAuth><UserProfile /></RequireAuth>} />
+
+        { user ? <Route path='/login' element={<Navigate to={pathName} />} /> : <Route path='/login' element={<Login />} /> }
+    
+        { user ? <Route path='/signup' element={<Navigate to="/" />} /> : <Route path='/signup' element={<SignUp />} /> }
       </Routes>
       <Footer />
-    </div>
+      <ToastContainer />
+    </>
   );
 }
 
