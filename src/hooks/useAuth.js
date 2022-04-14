@@ -2,13 +2,16 @@ import { useLocalStorage } from "./LocalStorage";
 import { auth } from "../firebase"
 import { db } from '../firebase';
 import { toasterror, toastsuccess } from "../Utilities/ToastMessage";
+import { useState } from "react";
 
 export const useAuth = () => {
     
     const [user, setuser] = useLocalStorage("user", null);
+    const [isLoading, setisLoading] = useState(false)
 
     const signIn = async (data) => {
-        try {
+        setisLoading(true)
+        try{
             const res = await auth.signInWithEmailAndPassword(data.email, data.password)
             const usersRef = db.ref('/users');
 
@@ -20,13 +23,16 @@ export const useAuth = () => {
             });
 
             toastsuccess("Login Succesfull")
-        } catch (err) {
+        }catch (err) {
             console.error(err);
             toasterror("An Error Occuered")
+        }finally{
+            setisLoading(false)
         }
     };
 
     const signUp = async (data) => {
+        setisLoading(true)
         try {
             const res = await auth.createUserWithEmailAndPassword(data.email, data.password)
 
@@ -45,10 +51,13 @@ export const useAuth = () => {
         } catch (err) {
             console.error(err);
             toasterror("An Error Occuered")
+        }finally{
+            setisLoading(false)
         }
     };
 
     const signOut = async () => {
+        setisLoading(true)
         try{
             await auth.signOut()
             setuser(null);
@@ -56,8 +65,10 @@ export const useAuth = () => {
         }catch(err){
             console.error(err)
             toasterror("An Error Occuered")
+        }finally{
+            setisLoading(false)
         }
     };
 
-    return { user, setuser, signIn, signUp, signOut };
+    return { user, setuser, signIn, signUp, signOut, isLoading };
 };

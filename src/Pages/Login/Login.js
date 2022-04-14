@@ -1,11 +1,12 @@
 import React, {useState} from 'react'
 import { Link } from 'react-router-dom';
 import { useAuthContext } from '../../Context'
+import { LoaderOverlay } from '../../Components';
 import './Auth.css';
 
 function Login() {
 
-  const { signIn } = useAuthContext();
+  const { signIn, isLoading } = useAuthContext();
   const [email, setemail] = useState('');
   const [password, setpassword] = useState('')
   const [errorValues, seterrorValues] = useState({})
@@ -64,6 +65,7 @@ function Login() {
           <button onClick={loginwithtesthandler} className="btn btn-auth margin-bottom--medium">Login with test credentials</button>
 
           <Link className="auth__link margin-tb--medium" to="/signup">Create New Account</Link>
+          { isLoading && <LoaderOverlay /> }
           
       </div>
     </div>

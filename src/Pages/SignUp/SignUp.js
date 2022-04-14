@@ -1,10 +1,11 @@
 import React, {useState} from 'react'
 import { Link } from 'react-router-dom'
 import { useAuthContext } from '../../Context'
+import { LoaderOverlay } from '../../Components';
 
 function SignUp() {
 
-  const { signUp } = useAuthContext()
+  const { signUp, isLoading } = useAuthContext()
   const [email, setemail] = useState('');
   const [password, setpassword] = useState('')
   const [confirmpassword, setconfirmpassword] = useState('')
@@ -73,7 +74,7 @@ function SignUp() {
           <button onClick={signUpHandler} className="btn btn-auth margin-bottom--medium">Sign Up</button>
 
           <Link className="auth__link margin-tb--medium" to="/login">Already have an account</Link>
-          
+          { isLoading && <LoaderOverlay /> }
       </div>
     </div>
   )
