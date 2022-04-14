@@ -26,7 +26,7 @@ function AllQuizPage() {
     if(!category){
       return arr
     }
-    return arr?.filter((item) => item.category == category)
+    return arr?.filter((item) => item.category === category)
   }
 
   const filterbySearch = (arr, search) => {
