@@ -11,6 +11,9 @@
 
     --clr-error: #dc2626;
     --clr-success: #15803d;
+
+    --auth-btn: #3b82f6;
+    --auth-btn-dark: #2563eb;
 }
 
 [data-theme="dark"] {

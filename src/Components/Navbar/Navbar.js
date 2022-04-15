@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { useTheme } from '../../Context/ThemeContext/ThemeContext';
+import { useAuthContext, useTheme } from '../../Context';
 import './Navbar.css'
 
 function Navbar() {
@@ -9,6 +9,8 @@ function Navbar() {
     const [search, setsearch] = useState('')
 
     const { Theme, setDarkMode, setLightMode } = useTheme()
+
+    const { user, signOut } = useAuthContext()
 
     let navigate = useNavigate()
 
@@ -57,6 +59,8 @@ function Navbar() {
                 </li>
                 { Theme==="light" ? <button onClick={setDarkMode} className="btn btn--secondary btn--icon moon padding--medium"><i className="fas fa-moon text--medium"></i><span>Dark Mode</span></button> :
                 <button onClick={setLightMode} className="btn btn--secondary btn--icon sun padding--medium"><i className="fas fa-sun text--medium"></i><span>Light Mode</span></button> }
+                { !user ? <button onClick={() => navigate('/login')} className='btn btn--secondary background--light margin-left--medium'>Login</button> : 
+                <button onClick={signOut} className='btn btn--secondary background--light margin-left--medium'>Logout</button> }
             </ul>
         </div>
         <div className="mobile__search__container">

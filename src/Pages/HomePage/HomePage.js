@@ -1,20 +1,24 @@
 import React, {useState, useEffect} from 'react';
-import CategoryCard from '../../Components/CategoryCard/CategoryCard';
+import { CategoryCard, Loader } from '../../Components';
 import { Link } from 'react-router-dom';
 import { db } from '../../firebase';
 import './HomePage.css'
 
 function HomePage() {
   const [category, setcategory] = useState([])
+  const [isLoading, setisLoading] = useState(false)
 
   useEffect(() => {
     (async function(){
+      setisLoading(true)
       try{
         const categories = db.ref('/Categories');
         const snapshot = await categories.once('value');
         setcategory(snapshot.val())
       }catch(err){
         console.error(err)
+      }finally{
+        setisLoading(false)
       }
     })()
     
@@ -59,6 +63,7 @@ function HomePage() {
         <div className="container__flex--center margin-bottom--large padding--medium">
             <h2 className='category--heading text--light'>Categories</h2>
         </div>
+        { isLoading && <Loader />}
         <div className="container__flex--center container__flex--wrap">
             {category?.map((item)=>{
               return <CategoryCard key={item?.id} category={item} />
