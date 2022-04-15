@@ -1,0 +1,15 @@
+.rules__container{
+    max-width: 50%;
+}
+
+.rules{
+    min-height: 70vh;
+}
+
+@media only screen and (max-width: 600px) {
+
+    .rules__container{
+        max-width: 100%;
+    }
+
+}
