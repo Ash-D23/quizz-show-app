@@ -24,4 +24,4 @@ function SingleQuiz({ game, result }) {
   )
 }
 
-export default SingleQuiz
+export { SingleQuiz }

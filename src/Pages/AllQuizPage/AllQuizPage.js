@@ -1,22 +1,26 @@
 import React, { useState, useEffect } from 'react'
 import { useSearchParams } from 'react-router-dom';
-import SingleQuiz from '../../Components/SingleQuiz/SingleQuiz';
+import { SingleQuiz, Loader } from '../../Components/';
 import { db } from '../../firebase';
 
 function AllQuizPage() {
 
   const [games, setgames] = useState([])
+  const [isLoading, setisLoading] = useState(false)
 
   const [searchParams] = useSearchParams();
 
   useEffect(() => {
     (async function(){
+      setisLoading(true)
       try{
         const categories = db.ref('/Games');
         const snapshot = await categories.once('value');
         setgames(snapshot.val())
       }catch(err){
         console.error(err)
+      }finally{
+        setisLoading(false)
       }
     })()
     
@@ -48,7 +52,7 @@ function AllQuizPage() {
   return (
     <div class="padding--large">
             <h2 class="text--center margin--medium category--heading text--light">Play Now</h2>
-
+            { isLoading && <Loader />}
             <div class="container__flex--center container__flex--wrap">
                 { filteredGames?.map((item) => <SingleQuiz key={item?.id} game={item} />)}
             </div>
