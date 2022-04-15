@@ -23,8 +23,8 @@ function SignUp() {
 
     if(password.length === 0){
       errors.password = "Password Required"
-    }else if(password.length < 4){
-      errors.password = "Password should be atleast 4 characters long"
+    }else if(password.length < 6){
+      errors.password = "Password should be atleast 6 characters long"
     }
 
     if(confirmpassword!==password){
@@ -50,7 +50,7 @@ function SignUp() {
 
   return (
     <div className="auth__container">
-      <div className="auth__contents border--grey">
+      <div className="auth__contents">
           <h3 className="text--center margin-tb--medium">Sign Up</h3>
           <div className="auth__section">
               <label className="auth-label form-label--required text--medium">Enter Email</label>

@@ -4,11 +4,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: var(--clr-primary-dark);
 }
 
 .auth__contents{
     width: 40rem;
     padding: 2rem;
+    background-color: var(--clr-primary);
 }
 
 .form-field{
@@ -26,12 +28,12 @@
 
 .btn-auth{
     width: 100%;
-    background-color: #3b82f6;
-    color: #ffffff;
+    background-color: var(--auth-btn);
+    color: var(--text-clr-secondary);
 }
 
 .btn-auth:hover{
-    background-color: #2563eb;
+    background-color: var(--auth-btn-dark);
 }
 
 .auth__link{
@@ -40,7 +42,7 @@
 }
 
 .auth__link:hover{
-    color: #2563eb;
+    color: var(--auth-btn-dark);
 }
 
 .auth__description{
@@ -67,7 +69,7 @@
 }
 
 .error--message{
-    color: red;
+    color: var(--clr-error);
 }
 
 @media only screen and (max-width: 500px) {

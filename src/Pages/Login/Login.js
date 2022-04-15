@@ -49,7 +49,7 @@ function Login() {
 
   return (
     <div className="auth__container">
-      <div className="auth__contents border--grey">
+      <div className="auth__contents">
           <h3 className="text--center margin-tb--medium">Login</h3>
           <div className="auth__section">
               <label className="auth-label form-label--required text--medium">Enter Email</label>
