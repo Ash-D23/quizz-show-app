@@ -8,7 +8,7 @@ function QuizQuestion() {
 
   const { quizGameState: {name, currentQuestion, questions, currentSelectedOption}, 
     quizGameMethods: {submitAnswer, selectAnswer}, 
-  timerobj: {time, resetTimer}} = useQuizGameContext()
+  timerObj: {time, resetTimer}} = useQuizGameContext()
 
   const { Theme } = useTheme()
   const navigate = useNavigate()

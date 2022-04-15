@@ -9,7 +9,7 @@ import { Loader } from '../Loader/Loader';
 
 function QuizGame({ gameid }) {
 
-  const { quizGameState: { gameState }, quizGameDispatch, timerobj: {startTimer} } = useQuizGameContext()
+  const { quizGameState: { gameState }, quizGameDispatch, timerObj: {startTimer} } = useQuizGameContext()
 
   const loadGame = async () => {
       try{

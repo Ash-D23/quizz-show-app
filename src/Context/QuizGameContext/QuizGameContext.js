@@ -75,7 +75,7 @@ const QuizGameProvider = ({children}) => {
     return <QuizGameContext.Provider value={{ quizGameState, quizGameMethods: {
         submitAnswer, selectAnswer
     }, quizGameDispatch, 
-    timerobj: { time, startTimer, stopTimer, resetTimer}}}>
+    timerObj: { time, startTimer, stopTimer, resetTimer}}}>
         {children}
     </QuizGameContext.Provider>
 }
