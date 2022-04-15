@@ -1,6 +1,7 @@
 
 .question{
     min-height: 70vh;
+    padding: var(--padding-large)
 }
 
 .question__container{
@@ -62,5 +63,9 @@
 @media only screen and (max-width: 600px) {
     .question__container{
         width: 100%;
+    }
+
+    .question{
+        padding: 0
     }
 }

@@ -6,10 +6,10 @@ export const QuizGameInitialState = {
     questions: [],
     answers: [],
     loading: false,
-    currentquestion: 0,
-    currentselectedoption: null,
-    selectedanswers: [], 
-    gamestate: "loading"
+    currentQuestion: 0,
+    currentSelectedOption: null,
+    selectedAnswers: [], 
+    gameState: "loading"
 }
 
 export const QuizGamereducerfn = (state, action)=> {
@@ -20,23 +20,23 @@ export const QuizGamereducerfn = (state, action)=> {
                     name: action.payload.name,
                     questions: action.payload.data.questions, 
                     answers: action.payload.data.answers, 
-                    gamestate: "rules" }
+                    gameState: "rules" }
         case QuizGameActions.SELECT_ANSWER:
-                return { ...state, currentselectedoption: action.payload }
+                return { ...state, currentSelectedOption: action.payload }
         case QuizGameActions.SUBMIT_ANSWER:
                 return { ...state, 
-                    selectedanswers: [...state.selectedanswers, state.currentselectedoption], 
-                    currentselectedoption: null, 
-                    currentquestion: state.currentquestion+1}
+                    selectedAnswers: [...state.selectedAnswers, state.currentSelectedOption], 
+                    currentSelectedOption: null, 
+                    currentQuestion: state.currentQuestion+1}
         case QuizGameActions.SUBMIT_ANSWER_AND_FINISH:
             return { ...state, 
-                    selectedanswers: action.payload.selectedanswers, 
-                    currentselectedoption: null,
-                    gamestate: 'results',
+                    selectedAnswers: action.payload.selectedAnswers, 
+                    currentSelectedOption: null,
+                    gameState: 'results',
                      score: action.payload.score}
         case QuizGameActions.GAME_STATE:
             return { ...state, 
-                    gamestate: action.payload.gamestate}
+                    gameState: action.payload.gameState}
         case "default":
             return state
     }

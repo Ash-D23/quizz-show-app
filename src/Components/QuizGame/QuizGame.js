@@ -9,29 +9,29 @@ import { Loader } from '../Loader/Loader';
 
 function QuizGame({ gameid }) {
 
-  const { quizgamestate: { gamestate }, quizgamedispatch, timerobj: {starttimer} } = useQuizGameContext()
+  const { quizGameState: { gameState }, quizGameDispatch, timerobj: {startTimer} } = useQuizGameContext()
 
   const loadGame = async () => {
       try{
         const categories = db.ref('/Games/'+gameid);
         const snapshot = await categories.once('value');
         const value = snapshot.val();
-        quizgamedispatch({ type: QuizGameActions.SET_QUIZ_DATA, payload: value})
+        quizGameDispatch({ type: QuizGameActions.SET_QUIZ_DATA, payload: value})
       }catch(err){
         console.error(err)
       }
   }
 
   const startGame = () => {
-    quizgamedispatch({ type: QuizGameActions.GAME_STATE, payload: {gamestate: "game"}})
-    starttimer()
+    quizGameDispatch({ type: QuizGameActions.GAME_STATE, payload: {gameState: "game"}})
+    startTimer()
   }
 
   useEffect(()=>{
     loadGame()
   }, [])
 
-  switch(gamestate){
+  switch(gameState){
     case 'loading':
       return <Loader />
     case 'rules':

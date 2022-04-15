@@ -50,10 +50,10 @@ function AllQuizPage() {
   const filteredGames = filterGames()
 
   return (
-    <div class="padding--large">
-            <h2 class="text--center margin--medium category--heading text--light">Play Now</h2>
+    <div className="padding--large">
+            <h2 className="text--center margin--medium category--heading text--light">Play Now</h2>
             { isLoading && <Loader />}
-            <div class="container__flex--center container__flex--wrap">
+            <div className="container__flex--center container__flex--wrap">
                 { filteredGames?.map((item) => <SingleQuiz key={item?.id} game={item} />)}
             </div>
     </div>

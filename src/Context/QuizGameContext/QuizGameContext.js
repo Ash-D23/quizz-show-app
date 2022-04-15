@@ -11,66 +11,71 @@ const useQuizGameContext = () => useContext(QuizGameContext)
 
 const QuizGameProvider = ({children}) => {
 
-    const [ quizgamestate, quizgamedispatch ] = useReducer(QuizGamereducerfn, QuizGameInitialState)
+    const [ quizGameState, quizGameDispatch ] = useReducer(QuizGamereducerfn, QuizGameInitialState)
 
-    const {time, starttimer, stoptimer, resettimer} = useTimer(10)
+    const {time, startTimer, stopTimer, resetTimer} = useTimer(10)
 
     const { user } = useAuthContext()
 
     useEffect(()=>{
         if(time<=0){
-          submitanswer()
+          submitAnswer()
         }
     }, [time])
 
     const CalculateScoreandShowResults = async ()=>{
-        quizgamedispatch({ type: QuizGameActions.GAME_STATE, payload: { gamestate: 'loading'} })
-        const { answers } = quizgamestate
-        const finalselectedanswers = [...quizgamestate.selectedanswers, quizgamestate.currentselectedoption]
-        let finalscore = 0;
+        quizGameDispatch({ type: QuizGameActions.GAME_STATE, payload: { gameState: 'loading'} })
+
+        const { answers } = quizGameState
+        const finalselectedAnswers = [...quizGameState.selectedAnswers, quizGameState.currentSelectedOption]
+
+        let finalScore = 0;
+
         answers.forEach((val, index)=>{
-          finalscore = val === finalselectedanswers[index] ? finalscore+1 : finalscore
+          finalScore = val === finalselectedAnswers[index] ? finalScore+1 : finalScore
         })
-        const totalquestions = quizgamestate.questions.length
-        finalscore = (finalscore/totalquestions)*100
+
+        const totalQuestions = quizGameState.questions.length
+        finalScore = (finalScore/totalQuestions)*100
+
         try{
-            const resultref = db.ref(`/results/`+user.uid);
+            const resultRef = db.ref(`/results/`+user.uid);
 
             const item = {
                 uid: user.uid,
-                score: finalscore,
-                name: quizgamestate.name,
-                id: quizgamestate.id
+                score: finalScore,
+                name: quizGameState.name,
+                id: quizGameState.id
             }
 
-            await resultref.push().set(item)
+            await resultRef.push().set(item)
 
-            quizgamedispatch({type: QuizGameActions.SUBMIT_ANSWER_AND_FINISH, 
-            payload: { selectedanswers: finalselectedanswers, score: finalscore}})
+            quizGameDispatch({type: QuizGameActions.SUBMIT_ANSWER_AND_FINISH, 
+            payload: { selectedAnswers: finalselectedAnswers, score: finalScore}})
         }catch(err){
             console.error(err)
         }
     }
 
-    const submitanswer = ()=> {
-        if(quizgamestate.currentquestion === quizgamestate.questions.length-1){
+    const submitAnswer = ()=> {
+        if(quizGameState.currentQuestion === quizGameState.questions.length-1){
             CalculateScoreandShowResults()
-            stoptimer()
+            stopTimer()
         }else{
-            quizgamedispatch({ type: QuizGameActions.SUBMIT_ANSWER})
-            resettimer()
-            starttimer()
+            quizGameDispatch({ type: QuizGameActions.SUBMIT_ANSWER})
+            resetTimer()
+            startTimer()
         }
     }
 
-    const selectanswer = (selectedanswer)=>{
-        quizgamedispatch({ type: QuizGameActions.SELECT_ANSWER, payload: selectedanswer})
+    const selectAnswer = (selectedAnswer)=>{
+        quizGameDispatch({ type: QuizGameActions.SELECT_ANSWER, payload: selectedAnswer})
     }
 
-    return <QuizGameContext.Provider value={{ quizgamestate, quizgamemethods: {
-        submitanswer, selectanswer
-    }, quizgamedispatch, 
-    timerobj: { time, starttimer, stoptimer, resettimer}}}>
+    return <QuizGameContext.Provider value={{ quizGameState, quizGameMethods: {
+        submitAnswer, selectAnswer
+    }, quizGameDispatch, 
+    timerobj: { time, startTimer, stopTimer, resetTimer}}}>
         {children}
     </QuizGameContext.Provider>
 }

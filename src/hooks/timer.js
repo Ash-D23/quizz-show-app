@@ -1,26 +1,26 @@
-import React, { useEffect, useState } from 'react'
+import { useState } from 'react'
 
 function useTimer(initial = 10) {
     const [timerid, settimerid] = useState(null)
     const [time, settime] = useState(initial)
     
-    const starttimer = () => {
+    const startTimer = () => {
         const timerid = setInterval(()=>{
           settime(prev => prev-1)
         }, 1000)
         settimerid(timerid)
     }
     
-    const stoptimer = ()=>{
+    const stopTimer = ()=>{
         clearInterval(timerid);
     }
 
-    const resettimer = ()=>{
+    const resetTimer = ()=>{
         clearInterval(timerid);
         settime(initial)
     }
 
-    return {time, timerid, starttimer, stoptimer, resettimer}
+    return {time, timerid, startTimer, stopTimer, resetTimer}
     
 }
 
