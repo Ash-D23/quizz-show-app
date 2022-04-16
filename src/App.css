@@ -54,11 +54,11 @@
 
 .btn--light{
     background-color: var(--clr-light);
-    color: var(--clr-primary);
+    color: var(--text-clr-secondary);
 }
 
 .btn--light:hover{
-    background-color: var(--clr-light);
+    background-color: #6d28d9;
 }
 
 .light__container{

@@ -21,6 +21,7 @@ function App() {
     <>
       <Navbar />
       <Routes>
+        
         <Route path='/' element={<HomePage />} />
         
         <Route path='/explore' element={<AllQuizPage />} />
@@ -34,6 +35,7 @@ function App() {
         { user ? <Route path='/login' element={<Navigate to={pathName} />} /> : <Route path='/login' element={<Login />} /> }
     
         { user ? <Route path='/signup' element={<Navigate to="/" />} /> : <Route path='/signup' element={<SignUp />} /> }
+
       </Routes>
       <Footer />
       <ToastContainer />
