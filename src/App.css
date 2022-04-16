@@ -48,7 +48,7 @@
 
 .btn--light{
     background-color: var(--clr-light);
-    color: var(--clr-primary);
+    color: var(--text-clr-secondary);
 }
 
 .btn--light:hover{

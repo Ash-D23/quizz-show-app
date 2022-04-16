@@ -15,7 +15,7 @@ function Dashboard() {
     (async function(){
         setisLoading(true)
         try{
-          const categories = db.ref('/results/'+user.uid);
+          const categories = db.ref('/results/'+user?.uid);
           const snapshot = await categories.once('value');
           const value = Object.values(snapshot.val())
           setresults(value)
