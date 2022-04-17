@@ -38,7 +38,6 @@
     color: var(--text-clr-secondary);
     font-size: 1.6rem;
     background: transparent;
-    color: #ffffff;
 }
 
 .search__input:focus{
@@ -103,5 +102,9 @@
 
     .moon i, .sun i{
         margin-right: var(--margin-medium);
+    }
+
+    .search__input{
+        color: var(--text-clr-primary)
     }
 }

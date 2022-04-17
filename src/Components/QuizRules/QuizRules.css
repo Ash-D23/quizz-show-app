@@ -1,0 +1,20 @@
+.rules__container{
+    max-width: 50%;
+}
+
+.rules{
+    min-height: 70vh;
+    padding: var(--padding-large)
+}
+
+@media only screen and (max-width: 600px) {
+
+    .rules__container{
+        max-width: 100%;
+    }
+
+    .rules{
+        padding: 0;
+    }
+
+}

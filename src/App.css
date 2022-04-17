@@ -24,6 +24,9 @@
 
     --text-clr-primary: #f1f5f9;
     --text-clr-secondary: #f3f4f6;
+
+    --clr-error: #dc2626;
+    --clr-success: #15803d;
 }
 
 [data-theme="light"] {
@@ -34,6 +37,9 @@
 
     --text-clr-primary: #000000;
     --text-clr-secondary: #FFFFFF;
+
+    --clr-error: #dc2626;
+    --clr-success: #22c55e;
 
 }
 
@@ -48,9 +54,17 @@
 
 .btn--light{
     background-color: var(--clr-light);
-    color: var(--clr-primary);
+    color: var(--text-clr-secondary);
 }
 
 .btn--light:hover{
-    background-color: var(--clr-light);
+    background-color: #6d28d9;
+}
+
+.light__container{
+    background-color: var(--clr-primary-dark);
+}
+
+.light__content{
+    background-color: var(--clr-primary);
 }
