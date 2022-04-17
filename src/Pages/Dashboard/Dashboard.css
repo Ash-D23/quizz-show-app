@@ -1,0 +1,29 @@
+.stat__container{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.stat{
+    font-family: var(--font-family-secondary);
+    width: max(25%, 20rem);
+    background-color: var(--clr-secondary);
+    color: var(--text-clr-secondary);
+    padding: var(--padding-medium);
+    border-radius: 20px;
+    margin: var(--margin-medium)
+}
+
+.stat p{
+    text-align: center;
+}
+
+.quiz--score{
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: var(--clr-light);
+    color: var(--text-clr-secondary);
+    padding: var(--padding-small)
+}
