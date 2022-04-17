@@ -5,7 +5,7 @@ import './QuizResults.css';
 
 function QuizResults() {
 
-    const { quizGameState: { questions, answers, selectedAnswers, score } } = useQuizGameContext()
+    const { quizGameState: { id, name, questions, answers, selectedAnswers, score } } = useQuizGameContext()
 
     const totalquestions = questions.length
 
@@ -20,6 +20,9 @@ function QuizResults() {
                 <p className="text--center margin--medium">Final Score: {score}/100</p>
                 { score >= 50 ? <p className="text--center margin--medium result">Congratulations !!! You Passed</p> :
                     <p className="text--center margin--medium result">Better Luck next Time!</p> }
+                <div className='results--actions'>
+                    <a href={`https://twitter.com/share?url=http://localhost:3000/quizgame/${id}&text=Hey Everyone I just scored ${score} points on this Quiz - ${name}. Challenge my score by playing: `} target="_blank"><button className='btn btn--share'>Share <i className="fab fa-twitter"></i></button></a>
+                </div>
             </div>
 
             <div className="result--answers margin-tb--medium">

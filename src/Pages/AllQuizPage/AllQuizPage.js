@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useSearchParams } from 'react-router-dom';
 import { SingleQuiz, Loader } from '../../Components/';
 import { db } from '../../firebase';
+import './AllQuizPage.css'
 
 function AllQuizPage() {
 
@@ -50,7 +51,7 @@ function AllQuizPage() {
   const filteredGames = filterGames()
 
   return (
-    <div className="padding--large">
+    <div className="padding--large allQuiz--container">
             <h2 className="text--center margin--medium category--heading text--light">Play Now</h2>
             { isLoading && <Loader />}
             <div className="container__flex--center container__flex--wrap">

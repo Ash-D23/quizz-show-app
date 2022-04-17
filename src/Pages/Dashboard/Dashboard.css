@@ -27,3 +27,7 @@
     color: var(--text-clr-secondary);
     padding: var(--padding-small)
 }
+
+.dashboard--container{
+    min-height: 70vh;
+}

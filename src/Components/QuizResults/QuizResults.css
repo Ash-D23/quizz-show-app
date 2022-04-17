@@ -27,6 +27,18 @@
     width: 100%;
 }
 
+.results--actions{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--padding-medium);
+}
+
+.btn--share{
+    background-color: var(--clr-share);
+    color: var(--text-clr-secondary);
+}
+
 @media only screen and (max-width: 600px) {
     .container__results{
         width: 100%;

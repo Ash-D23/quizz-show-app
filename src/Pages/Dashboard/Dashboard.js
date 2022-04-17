@@ -32,7 +32,7 @@ function Dashboard() {
   const highScore = results?.reduce((acc,curr) => curr.score > acc ? curr.score : acc, 0) || 0
   
   return isLoading ? <Loader /> : (
-    <div>
+    <div className='dashboard--container'>
         <h2 class="text--center category--heading text--light margin--large">Dashboard</h2>
 
         <div class="stat__container padding--large">
