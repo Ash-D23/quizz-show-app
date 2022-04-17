@@ -37,7 +37,7 @@ export const QuizGamereducerfn = (state, action)=> {
         case QuizGameActions.GAME_STATE:
             return { ...state, 
                     gameState: action.payload.gameState}
-        case "default":
+        default:
             return state
     }
 }
