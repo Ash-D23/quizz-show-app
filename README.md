@@ -2,7 +2,7 @@
 
 QuizzShow is a Quiz App which helps you to improve your knowledge and compete with your friends.
 
-Link: quizzshoww.netlify.app/
+Link: https://quizzshoww.netlify.app/
 
 ### How To Start
 
