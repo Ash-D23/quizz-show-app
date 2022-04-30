@@ -1,6 +1,6 @@
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import { Navbar, Footer } from './Components';
-import { HomePage, AllQuizPage, QuizGamePage, Dashboard, UserProfile, Login, SignUp } from './Pages';
+import { HomePage, AllQuizPage, QuizGamePage, Dashboard, UserProfile, Login, SignUp, NotFoundPage } from './Pages';
 import './App.css';
 import { useAuthContext } from './Context';
 import RequireAuth from './hooks/RequireAuth';
@@ -35,6 +35,8 @@ function App() {
         { user ? <Route path='/login' element={<Navigate to={pathName} />} /> : <Route path='/login' element={<Login />} /> }
     
         { user ? <Route path='/signup' element={<Navigate to="/" />} /> : <Route path='/signup' element={<SignUp />} /> }
+
+        <Route path="*" element={<NotFoundPage />} />
 
       </Routes>
       <Footer />

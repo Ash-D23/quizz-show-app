@@ -102,7 +102,11 @@
     margin-right: 0;
 }
 
-@media only screen and (max-width: 800px) {
+.profile span{
+    display: none;
+}
+
+@media only screen and (max-width: 850px) {
     .search__container{
         display: none;
     }
@@ -160,6 +164,10 @@
         margin-left: var(--margin-medium);
     }
 
+    .navbar__item a {
+        font-weight: 100;
+    }
+
     .navbar__list-container{
         display: none;
     }
@@ -176,5 +184,7 @@
         margin-right: var(--margin-medium);
     }
 
-    
+    .profile span{
+        display: inline-block;
+    }
 }

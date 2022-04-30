@@ -52,10 +52,14 @@ function AllQuizPage() {
 
   return (
     <div className="padding--large allQuiz--container">
-            <h2 className="text--center margin--medium category--heading text--light">Play Now</h2>
+            { filteredGames.length !== 0 ? <h2 className="text--center margin--medium category--heading text--light">Play Now</h2> : null }
             { isLoading && <Loader />}
             <div className="container__flex--center container__flex--wrap">
-                { filteredGames?.map((item) => <SingleQuiz key={item?.id} game={item} />)}
+                { filteredGames.length !== 0 ? filteredGames.map((item) => <SingleQuiz key={item?.id} game={item} />) :
+                <div className='empty-list--container'>
+                <img src="/Images/blank.svg" alt="not found" />
+                <h2 className='text--center padding--medium'>No Items Found</h2>
+              </div> }
             </div>
     </div>
   )

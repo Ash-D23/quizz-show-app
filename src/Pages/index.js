@@ -5,3 +5,4 @@ export { Dashboard } from './Dashboard/Dashboard';
 export { UserProfile } from './UserProfile/UserProfile';
 export { Login } from './Login/Login';
 export { SignUp } from './SignUp/SignUp';
+export { NotFoundPage } from './NotFoundPage/NotFoundPage'
