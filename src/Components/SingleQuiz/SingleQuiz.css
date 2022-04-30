@@ -5,3 +5,7 @@
 .quiz--card .card__title{
     color: var(--text-clr-secondary);
 }
+
+.quiz--card{
+    cursor: pointer;
+}

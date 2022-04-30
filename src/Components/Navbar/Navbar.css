@@ -24,6 +24,10 @@
     display: none;
 }
 
+.quiz--nav{
+    overflow: visible;
+}
+
 .search__container{
     display: flex;
     min-width: 10rem;
@@ -44,6 +48,42 @@
     outline: none;
 }
 
+.search__items{
+    width: 100%;
+    min-height: 4rem;
+    max-height: 40rem;
+    background-color: #f4f4f5;
+    position: absolute;
+    display: none;
+    margin-top: var(--margin-small);
+    padding-top: var(--padding-small);
+    z-index: 3;
+    overflow-y: auto;
+    border: 1px solid var(--clr-grey);
+}
+
+.search__items--display{
+    display: block;
+}
+
+.search__items--mobiledisplay{
+    display: none;
+}
+
+.search__items--list{
+    padding: var(--padding-small);
+}
+
+.search__items--list:hover{
+    cursor: pointer;
+    background-color: var(--clr-grey);
+}
+
+.search__items .search__items--list{
+    font-weight: 100;
+    color: #000000;
+}
+
 .mobile__search__container{
     display: none;
     border-bottom: 1px solid var(--clr-grey);
@@ -62,8 +102,7 @@
     margin-right: 0;
 }
 
-@media only screen and (max-width: 600px) {
-
+@media only screen and (max-width: 800px) {
     .search__container{
         display: none;
     }
@@ -71,6 +110,39 @@
     .mobile__search__container{
         display: block;
     }
+
+    .search__input{
+        color: var(--text-clr-primary)
+    }
+
+    .mobile__search__container{
+        display: flex;
+        align-items: center;
+        padding: var(--padding-small)
+    }
+
+    .mobile__search__container{
+        border-bottom: 1px solid var(--clr-dark-grey);
+    }
+
+    .mobile__search__container .search__input{
+        flex-grow: 1;
+    }
+
+    .Games-search{
+        display: none;
+    }
+
+    .search__items--mobiledisplay{
+        display: block;
+    }
+
+    .search__items{
+        margin-top: 0;
+    }
+}
+
+@media only screen and (max-width: 600px) {
 
     .navbar__item:hover{
         color: var(--clr-primary);
@@ -104,7 +176,5 @@
         margin-right: var(--margin-medium);
     }
 
-    .search__input{
-        color: var(--text-clr-primary)
-    }
+    
 }

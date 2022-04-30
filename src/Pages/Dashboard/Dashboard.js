@@ -18,7 +18,7 @@ function Dashboard() {
           const categories = db.ref('/results/'+user?.uid);
           const snapshot = await categories.once('value');
           const value = Object.values(snapshot.val())
-          setresults(value)
+          setresults(value.reverse())
         }catch(err){
           console.error(err)
         }finally{

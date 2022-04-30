@@ -1,10 +1,12 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import './SingleQuiz.css'
 
 function SingleQuiz({ game, result }) {
+
+  const navigate = useNavigate()
   return (
-    <div className="card quiz--card margin--medium">
+    <div onClick={()=> navigate('/quizgame/'+game?.id)} className="card quiz--card margin--medium">
         <div className="card__image--container container--relative">
           <img className="card__image " src="./Images/quiz.jpg" alt="single quiz" />
           { result ? <p className="text--large quiz--score">Score: {game?.score}</p> : null}
