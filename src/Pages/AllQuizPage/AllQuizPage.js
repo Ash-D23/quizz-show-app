@@ -15,8 +15,8 @@ function AllQuizPage() {
     (async function(){
       setisLoading(true)
       try{
-        const categories = db.ref('/Games');
-        const snapshot = await categories.once('value');
+        const allGames = db.ref('/Games');
+        const snapshot = await allGames.once('value');
         setgames(snapshot.val())
       }catch(err){
         console.error(err)

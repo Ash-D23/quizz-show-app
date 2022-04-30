@@ -5,6 +5,7 @@ import './SingleQuiz.css'
 function SingleQuiz({ game, result }) {
 
   const navigate = useNavigate()
+  
   return (
     <div onClick={()=> navigate('/quizgame/'+game?.id)} className="card quiz--card margin--medium">
         <div className="card__image--container container--relative">

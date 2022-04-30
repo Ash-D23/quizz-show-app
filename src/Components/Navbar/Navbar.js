@@ -6,13 +6,11 @@ import './Navbar.css'
 
 function Navbar() {
     const [showmenu, setshowmenu] = useState(false)
-
     const [search, setSearch] = useState('')
     const [showSearchItems, setShowSearchItems] = useState(false)
     const [Games, setGames] = useState([])
 
     const { Theme, setDarkMode, setLightMode } = useTheme()
-
     const { user, signOut } = useAuthContext()
 
     const searchInput = useRef(null)
@@ -23,10 +21,9 @@ function Navbar() {
     useEffect(()=>{
         (async function(){
             try{
-                const categories = db.ref('/Games');
-                const snapshot = await categories.once('value');
+                const games = db.ref('/Games');
+                const snapshot = await games.once('value');
                 setGames(snapshot.val())
-                console.log(snapshot.val())
               }catch(err){
                 console.error(err)
               }
@@ -41,8 +38,7 @@ function Navbar() {
 
     const searchSubmit = () => {
         let path = '/explore?search='+search
-        setShowSearchItems(false)
-        setSearch('')
+        handleClear()
         navigate(path)
     }
 
@@ -52,8 +48,7 @@ function Navbar() {
     }
 
     const handleNavigate = (id) => {
-        setShowSearchItems(false)
-        setSearch('')
+        handleClear()
         navigate('/quizgame/'+id)
     }
 
@@ -65,7 +60,6 @@ function Navbar() {
         return Games.filter((item) => item?.name?.toLowerCase().includes(search.toLowerCase() ))
     }
         
-    
     const SearchGames = filterGamesBySearch(Games, search)
 
   return (

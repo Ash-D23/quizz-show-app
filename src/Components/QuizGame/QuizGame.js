@@ -13,8 +13,8 @@ function QuizGame({ gameid }) {
 
   const loadGame = async () => {
       try{
-        const categories = db.ref('/Games/'+gameid);
-        const snapshot = await categories.once('value');
+        const singleGame = db.ref('/Games/'+gameid);
+        const snapshot = await singleGame.once('value');
         const value = snapshot.val();
         quizGameDispatch({ type: QuizGameActions.SET_QUIZ_DATA, payload: value})
       }catch(err){
