@@ -30,6 +30,27 @@ function Navbar() {
         })()
     }, [])
 
+    useEffect(() => {
+        const closeSearchMenu = () => {
+          setSearch('')
+          setShowSearchItems(false)
+        }
+    
+        const handleClickOutside = (e)=>{
+          const isClickedOutsideInput = (searchInput.current && searchInput.current.contains(e.target)) || 
+          (searchInputMobile.current && searchInputMobile.current.contains(e.target))
+          if(!isClickedOutsideInput){
+              closeSearchMenu()
+          }
+       }
+    
+        document.body.addEventListener('click', handleClickOutside)
+    
+        return () => {
+            document.body.removeEventListener('click', handleClickOutside)
+        }
+      }, [])
+
     const searchHandler = (e) => {
         if(e.keyCode === 13){
             searchSubmit()
