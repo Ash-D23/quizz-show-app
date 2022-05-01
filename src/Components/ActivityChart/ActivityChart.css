@@ -1,0 +1,13 @@
+.activity-chart--container{
+    width: 60%;
+    margin: auto
+}
+
+
+@media only screen and (max-width: 600px) {
+    .activity-chart--container{
+        width: 100%;
+        padding: var(--padding-medium);
+        margin: auto;
+    }
+}

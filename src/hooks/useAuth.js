@@ -2,12 +2,22 @@ import { useLocalStorage } from "./LocalStorage";
 import { auth } from "../firebase"
 import { db } from '../firebase';
 import { toasterror, toastsuccess } from "../Utilities/ToastMessage";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export const useAuth = () => {
     
     const [user, setuser] = useLocalStorage("user", null);
     const [isLoading, setisLoading] = useState(false)
+
+    useEffect(()=>{
+        auth.onAuthStateChanged(user => {
+            if (user) {
+                setuser(user)
+            } else {
+                setuser(null)
+            }
+        })
+    }, [])
 
     const signIn = async (data) => {
         setisLoading(true)

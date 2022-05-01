@@ -1,12 +1,12 @@
 import React, {useEffect, useState} from 'react';
-import { SingleQuiz, Loader } from '../../Components';
+import { SingleQuiz, Loader, ActivityChart } from '../../Components';
 import { useAuthContext } from '../../Context';
 import { db } from '../../firebase';
 import './Dashboard.css';
 
 function Dashboard() {
 
-    const [results, setresults] = useState();
+    const [results, setresults] = useState([]);
     const [isLoading, setisLoading] = useState(false);
 
     const { user } = useAuthContext();
@@ -18,6 +18,7 @@ function Dashboard() {
           const dashboard = db.ref('/results/'+user?.uid);
           const snapshot = await dashboard.once('value');
           const value = Object.values(snapshot.val())
+          console.log(value)
           setresults(value.reverse())
         }catch(err){
           console.error(err)
@@ -33,30 +34,37 @@ function Dashboard() {
   
   return isLoading ? <Loader /> : (
     <div className='dashboard--container'>
-        <h2 class="text--center category--heading text--light margin--large">Dashboard</h2>
+        <h2 className="text--center category--heading text--light margin--large">Dashboard</h2>
 
-        <div class="stat__container padding--large">
-            <div class="stat">
+        <div className="stat__container padding--large">
+            <div className="stat">
                 <p>Games Played</p>
                 <p>{gamesPalyed}</p>
             </div>
 
-            <div class="stat">
+            <div className="stat">
                 <p>Total Points</p>
                 <p>{totalScore}</p>
             </div>
 
-            <div class="stat">
+            <div className="stat">
                 <p>Highest Score</p>
                 <p>{highScore}</p>
             </div>
         </div>
 
-        <div class="padding--large">
-            <h2 class="text--center category--heading text--light margin--large">Quiz Results</h2>
+        <ActivityChart results={results} />
 
-            <div class="container__flex--center container__flex--wrap">
-                {results?.map((item) => <SingleQuiz game={item} result={true} />)}
+        <div className="padding--large">
+            <h2 className="text--center category--heading text--light margin--large">Quiz Results</h2>
+
+            <div className="container__flex--center container__flex--wrap">
+                {results ? results.map((item, index) => <SingleQuiz key={index} game={item} result={true} />) :
+                <div className='empty-list--container'>
+                <img src="/Images/blank.svg" alt="not found" />
+                <h2 className='text--center padding--medium'>No Items Found</h2>
+              </div>}
+                
             </div>
         </div>
     </div>

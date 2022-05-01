@@ -117,7 +117,7 @@ function Navbar() {
                    </div>
                     : <div style={{ height: `${2 + SearchGames.length*2}rem`}}
                      className={`search__items ${ showSearchItems ? `search__items--display` : ''}`}>
-                        {SearchGames?.map((item) => <p key={item?._id} onClick={(e) => handleNavigate(item?.id)} className='search__items--list'>{item.name}</p>)}
+                        {SearchGames?.map((item) => <p key={item?.id} onClick={(e) => handleNavigate(item?.id)} className='search__items--list'>{item.name}</p>)}
                     </div>}
             </div>
             <ul className={`navbar__list-container ${showmenu ? 'navbar__display': null}`}>
@@ -158,7 +158,7 @@ function Navbar() {
                    </div>
                     : <div style={{ height: `${2 + SearchGames.length*2}rem`}}
                      className={`search__items ${ showSearchItems ? `search__items--mobiledisplay` : ''}`}>
-                        {SearchGames?.map((item) => <p key={item?._id}  onClick={(e) => handleNavigate(item?.id)} className='search__items--list'>{item.name}</p>)}
+                        {SearchGames?.map((item) => <p key={item?.id}  onClick={(e) => handleNavigate(item?.id)} className='search__items--list'>{item.name}</p>)}
               </div>}
           </div>
     </div>

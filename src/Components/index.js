@@ -5,3 +5,4 @@ export { SingleQuiz } from './SingleQuiz/SingleQuiz';
 export { Loader } from './Loader/Loader'
 export { LoaderOverlay } from './Loader/LoaderOverlay';
 export { QuizGame } from './QuizGame/QuizGame';
+export { ActivityChart } from './ActivityChart/ActivityChart'

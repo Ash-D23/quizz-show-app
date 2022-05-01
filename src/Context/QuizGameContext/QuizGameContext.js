@@ -45,7 +45,8 @@ const QuizGameProvider = ({children}) => {
                 uid: user.uid,
                 score: finalScore,
                 name: quizGameState.name,
-                id: quizGameState.id
+                id: quizGameState.id,
+                date: new Date().toString()
             }
 
             await resultRef.push().set(item)
