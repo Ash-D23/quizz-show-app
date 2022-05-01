@@ -132,7 +132,7 @@ function Navbar() {
                 </li> : null }
                 { Theme==="light" ? <button onClick={setDarkMode} className="btn btn--secondary btn--icon moon padding--medium"><i className="fas fa-moon text--medium"></i><span>Dark Mode</span></button> :
                 <button onClick={setLightMode} className="btn btn--secondary btn--icon sun padding--medium"><i className="fas fa-sun text--medium"></i><span>Light Mode</span></button> }
-                { !user ? <button onClick={() => navigate('/login')} className='btn btn--secondary background--light margin-left--medium'>Login</button> : 
+                { !user ? <button onClick={() => navigate('/login')} className='btn btn--light margin--medium'>Login</button> : 
                 <button onClick={signOut} className='btn btn--light margin--medium'>Logout</button> }
             </ul>
         </div>

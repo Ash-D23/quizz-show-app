@@ -18,7 +18,6 @@ function Dashboard() {
           const dashboard = db.ref('/results/'+user?.uid);
           const snapshot = await dashboard.once('value');
           const value = Object.values(snapshot.val())
-          console.log(value)
           setresults(value.reverse())
         }catch(err){
           console.error(err)

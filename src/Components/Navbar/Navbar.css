@@ -187,4 +187,8 @@
     .profile span{
         display: inline-block;
     }
+
+    .profile i{
+        display: none;
+    }
 }
