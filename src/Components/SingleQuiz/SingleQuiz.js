@@ -9,7 +9,7 @@ function SingleQuiz({ game, result }) {
   return (
     <div onClick={()=> navigate('/quizgame/'+game?.id)} className="card quiz--card margin--medium">
         <div className="card__image--container container--relative">
-          <img className="card__image " src="./Images/quiz.jpg" alt="single quiz" />
+          <img className="card__image" src={game?.img} alt="single quiz" />
           { result ? <p className="text--large quiz--score">Score: {game?.score}</p> : null}
         </div>
         <div className="card__body background--light padding--medium">
