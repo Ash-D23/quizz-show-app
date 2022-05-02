@@ -1,0 +1,27 @@
+.result-game--container{
+    width: 100%;
+    border-bottom: 1px solid var(--clr-grey);
+}
+
+.result-heading--container{
+    width: 100%;
+    border-bottom: 1px solid var(--clr-grey);
+}
+
+.result-game--container:hover{
+    background-color: var(--clr-light);
+    border-bottom: 1px solid var(--clr-light);
+    color: var(--text-clr-secondary);
+    cursor: pointer;
+}
+
+.result-game--container p, .result-heading--container p{
+    font-family: var(--font-family-secondary);
+    margin-left: 1rem;
+}
+
+.result-game--container p:last-child{
+    margin-right: 1rem;
+}
+
+
