@@ -6,14 +6,13 @@ import './AllQuizPage.css'
 
 function AllQuizPage() {
 
-  const [games, setgames] = useState([])
-  const [isLoading, setisLoading] = useState(false)
+  const [games, setgames] = useState(null)
+  const [isLoading, setisLoading] = useState(true)
 
   const [searchParams] = useSearchParams();
 
   useEffect(() => {
     (async function(){
-      setisLoading(true)
       try{
         const allGames = db.ref('/Games');
         const snapshot = await allGames.once('value');
@@ -52,15 +51,16 @@ function AllQuizPage() {
 
   return (
     <div className="padding--large allQuiz--container">
-            { filteredGames.length !== 0 ? <h2 className="text--center margin--medium category--heading text--light">Play Now</h2> : null }
+            { filteredGames?.length !== 0 ? <h2 className="text--center margin--medium category--heading text--light">Play Now</h2> : null }
             { isLoading && <Loader />}
             <div className="container__flex--center container__flex--wrap">
-                { filteredGames.length !== 0 ? filteredGames.map((item) => <SingleQuiz key={item?.id} game={item} />) :
-                <div className='empty-list--container'>
+                { filteredGames?.map((item) => <SingleQuiz key={item?.id} game={item} />) }
+                { filteredGames?.length === 0 ? <div className='empty-list--container'>
                 <img src="/Images/blank.svg" alt="not found" />
                 <h2 className='text--center padding--medium'>No Items Found</h2>
-              </div> }
+              </div>: null}
             </div>
+           
     </div>
   )
 }
