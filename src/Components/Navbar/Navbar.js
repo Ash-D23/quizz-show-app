@@ -18,6 +18,8 @@ function Navbar() {
 
     let navigate = useNavigate()
 
+    const closeMenu = () => setshowmenu(false)
+
     useEffect(()=>{
         (async function(){
             try{
@@ -73,6 +75,11 @@ function Navbar() {
         navigate('/quizgame/'+id)
     }
 
+    const navigateToLogin = () => {
+        closeMenu()
+        navigate('/login')
+    }
+
     const filterGamesBySearch = (Games, search) => {
         if(search === null){
             return Games
@@ -122,18 +129,27 @@ function Navbar() {
             </div>
             <ul className={`navbar__list-container ${showmenu ? 'navbar__display': null}`}>
                 <li className="navbar__item">
-                    <Link to="/dashboard">Dashboard</Link>
+                    <Link onClick={closeMenu} to="/dashboard">Dashboard</Link>
                 </li>
                 <li className="navbar__item">
-                    <Link to="/explore">Explore</Link>
+                    <Link onClick={closeMenu} to="/explore">Explore</Link>
                 </li>
                 { user ? <li className="navbar__item profile">
-                    <Link to="/profile"><i className="fas fa-user"></i><span className='margin-left--small'>Profile</span></Link>
+                    <Link onClick={closeMenu} to="/profile"><i className="fas fa-user"></i><span className='margin-left--small'>Profile</span></Link>
                 </li> : null }
-                { Theme==="light" ? <button onClick={setDarkMode} className="btn btn--secondary btn--icon moon padding--medium"><i className="fas fa-moon text--medium"></i><span>Dark Mode</span></button> :
-                <button onClick={setLightMode} className="btn btn--secondary btn--icon sun padding--medium"><i className="fas fa-sun text--medium"></i><span>Light Mode</span></button> }
-                { !user ? <button onClick={() => navigate('/login')} className='btn btn--light margin--medium'>Login</button> : 
-                <button onClick={signOut} className='btn btn--light margin--medium'>Logout</button> }
+                { Theme==="light" ? <button onClick={() => {
+                    setDarkMode()
+                    closeMenu()
+                } } className="btn btn--secondary btn--icon moon padding--medium"><i className="fas fa-moon text--medium"></i><span>Dark Mode</span></button> :
+                <button onClick={() => {
+                    setLightMode()
+                    closeMenu()
+                    }} className="btn btn--secondary btn--icon sun padding--medium"><i className="fas fa-sun text--medium"></i><span>Light Mode</span></button> }
+                { !user ? <button onClick={navigateToLogin} className='btn btn--light margin--medium'>Login</button> : 
+                <button onClick={()=> {
+                    closeMenu()
+                    signOut()
+                }} className='btn btn--light margin--medium'>Logout</button> }
             </ul>
         </div>
         <div className='container--relative'>
