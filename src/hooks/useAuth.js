@@ -12,7 +12,14 @@ export const useAuth = () => {
     useEffect(()=>{
         auth.onAuthStateChanged(user => {
             if (user) {
-                setuser(user)
+                const usersRef = db.ref('/users');
+
+                usersRef.orderByChild('uid').equalTo(user.uid).on("value", function(snapshot) {
+                    const data = snapshot.val()
+                    const key = Object.keys(data)[0]
+
+                    setuser(data[key])
+                });
             } else {
                 setuser(null)
             }
