@@ -1,6 +1,8 @@
+import { userType } from "../../types/AuthContext.types"
+import { UserProfileActions } from "../../types/UserProfileReducer.types"
 import { USER_PROFILE_ACTIONS } from "../../Utilities"
 
-export const userProfileReducerFn = (state : any, action : any) =>{
+export const userProfileReducerFn = (state : userType, action : UserProfileActions) =>{
     switch(action.type){
         case USER_PROFILE_ACTIONS.UPDATE_USER_NAME :
             return { ...state, userName: action.payload }
