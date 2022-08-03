@@ -9,7 +9,10 @@ function UserProfile() {
 
   const [editmode, seteditmode] = useState(false)
 
-  const { user, setuser } : any = useAuthContext()
+  const auth = useAuthContext()
+
+  const user = auth?.user;
+  const setuser = auth?.setuser
 
   const [userProfile, userProfileDispatch ] = useReducer( userProfileReducerFn , user )
 
@@ -18,17 +21,21 @@ function UserProfile() {
   const onUpdateSubmit = async ()=> {
       try{
             const usersRef = db.ref('/users');
-
-            usersRef.orderByChild('uid').equalTo(user.uid).on("value", function(snapshot) {
-                const data = snapshot.val()
-                const key = Object.keys(data)[0]
-
-                const userRef = db.ref('users/'+key);
-                userRef.update(userProfile)
-                setuser(userProfile)
-            });
-
-            toastsuccess("Updated User Succesfully")
+            if(user){
+                usersRef.orderByChild('uid').equalTo(user?.uid).on("value", function(snapshot) {
+                    const data = snapshot.val()
+                    const key = Object.keys(data)[0]
+    
+                    const userRef = db.ref('users/'+key);
+                    userRef.update(userProfile)
+                    if(setuser){
+                        setuser(userProfile)
+                    }
+                });
+    
+                toastsuccess("Updated User Succesfully")
+            }
+            
       }catch(err){
             console.error(err)
             userProfileDispatch({ type: 'resetProfile', payload: user})

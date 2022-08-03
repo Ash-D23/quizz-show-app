@@ -1,5 +1,5 @@
 import { createContext, useContext, useReducer, useEffect } from "react";
-import useTimer from "../../hooks/timer"
+import useTimer from "../../hooks/timer";
 import { db } from '../../firebase';
 import { useAuthContext } from "../AuthContext/AuthContext";
 import { QuizGameActions } from "../../Utilities";
@@ -14,9 +14,11 @@ const QuizGameProvider = ({ children }: { children: React.ReactNode }) => {
 
     const [ quizGameState, quizGameDispatch ] = useReducer(QuizGamereducerfn, QuizGameInitialState)
 
-    const {time, startTimer, stopTimer, resetTimer} = useTimer(10)
+    const { time, startTimer, stopTimer, resetTimer } = useTimer(10)
 
-    const { user } : any= useAuthContext()
+    const auth = useAuthContext()
+
+    const user = auth?.user;
 
     useEffect(()=>{
         if(time<=0){
@@ -40,10 +42,10 @@ const QuizGameProvider = ({ children }: { children: React.ReactNode }) => {
         finalScore = (finalScore/totalQuestions)*100
 
         try{
-            const resultRef = db.ref(`/results/`+user.uid);
+            const resultRef = db.ref(`/results/`+user?.uid);
 
             const item = {
-                uid: user.uid,
+                uid: user?.uid,
                 score: finalScore,
                 name: quizGameState.name,
                 id: quizGameState.id,

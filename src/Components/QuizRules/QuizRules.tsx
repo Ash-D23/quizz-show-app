@@ -2,9 +2,10 @@ import React from 'react';
 import { useTheme } from '../../Context';
 import './QuizRules.css';
 
-function QuizRules({ start } : any) {
+function QuizRules({ start } : { start : () => void}) {
 
-  const { Theme } : any = useTheme()
+  const ThemeValue  = useTheme()
+  const Theme = ThemeValue?.Theme
 
   return (
     <div className={`container__flex--center rules ${ Theme === 'light' ? 'light__container' : ''}`}>

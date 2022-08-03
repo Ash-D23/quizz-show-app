@@ -3,11 +3,7 @@ import { auth } from "../firebase"
 import { db } from '../firebase';
 import { toasterror, toastsuccess } from "../Utilities/ToastMessage";
 import { useEffect, useState } from "react";
-
-type dataType = {
-    email: string,
-    password: string
-}
+import { dataType } from "../types/AuthContext.types";
 
 export const useAuth = () => {
     

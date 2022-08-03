@@ -7,8 +7,9 @@ import QuizRules from '../QuizRules/QuizRules';
 import { QuizGameActions } from '../../Utilities';
 import { Loader } from '../Loader/Loader';
 import { useNavigate } from 'react-router-dom';
+import { QuizGameType } from '../../types/QuizGame.types';
 
-function QuizGame({ gameid } : any) {
+function QuizGame({ gameid } : { gameid: string | undefined}) {
 
   const { quizGameState: { gameState }, quizGameDispatch, timerObj: {startTimer} } : any = useQuizGameContext()
 

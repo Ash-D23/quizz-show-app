@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useSearchParams } from 'react-router-dom';
 import { SingleQuiz, Loader } from '../../Components/';
 import { db } from '../../firebase';
+import { CategoryParamType, GamesArrType, GamesType, SearchParamType } from '../../types/AllQuiz.types';
 import './AllQuizPage.css'
 
 function AllQuizPage() {
@@ -26,23 +27,23 @@ function AllQuizPage() {
     
   }, [])
 
-  const filterbyCategory = (arr : any, category: string) => {
+  const filterbyCategory = (arr : GamesArrType, category: CategoryParamType) => {
     if(!category){
       return arr
     }
-    return arr?.filter((item : any) => item.category === parseInt(category))
+    return arr?.filter((item : GamesType) => item.category === parseInt(category))
   }
 
-  const filterbySearch = (arr : any, search: string) => {
+  const filterbySearch = (arr : GamesArrType, search: SearchParamType) => {
     if(!search){
       return arr
     }
-    return arr?.filter((item : any) => item.name.toLowerCase().includes(search.toLowerCase()))
+    return arr?.filter((item : GamesType) => item.name.toLowerCase().includes(search.toLowerCase()))
   }
 
   const filterGames = () => {
-    const category : any = searchParams.get('category')
-    const search : any= searchParams.get('search')
+    const category : CategoryParamType  = searchParams.get('category')
+    const search : SearchParamType = searchParams.get('search')
     const filteredByCategory = filterbyCategory(games, category)
     return filterbySearch(filteredByCategory, search)
   }
@@ -54,7 +55,7 @@ function AllQuizPage() {
             { filteredGames?.length !== 0 ? <h2 className="text--center margin--medium category--heading text--light">Play Now</h2> : null }
             { isLoading && <Loader />}
             <div className="container__flex--center container__flex--wrap">
-                { filteredGames?.map((item : any) => <SingleQuiz key={item?.id} game={item} result={null} />) }
+                { filteredGames?.map((item : GamesType) => <SingleQuiz key={item?.id} game={item} result={null} />) }
                 { filteredGames?.length === 0 ? <div className='empty-list--container'>
                 <img src="/Images/blank.svg" alt="not found" />
                 <h2 className='text--center padding--medium'>No Items Found</h2>

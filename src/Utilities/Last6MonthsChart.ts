@@ -1,6 +1,8 @@
+import { ResultsArrType, ResultsType } from "../types/AllQuiz.types"
+
 const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"]
 
-export const CalculateLast6Months = (date : any) => {
+export const CalculateLast6Months = (date : Date) => {
     const currentMonth = date.getMonth()
 
     let i=6, temp = currentMonth
@@ -20,11 +22,11 @@ export const CalculateLast6Months = (date : any) => {
     return labels.reverse().map((item) => months[item])
   }
 
-const divideData = (currentYear : any, data : any) => {
-    const currentYearData : any = {}
-    const prevYearData : any= {}
+const divideData = (currentYear : number, data : ResultsArrType) => {
+    const currentYearData : any= {}
+    const prevYearData : any = {}
 
-    data.forEach((element : any) => {
+    data.forEach((element : ResultsType) => {
       let elementDate = new Date(element.date)
       let elementYear = elementDate.getFullYear()
       let elementMonth = elementDate.getMonth()
@@ -51,7 +53,7 @@ const divideData = (currentYear : any, data : any) => {
     return [currentYearData, prevYearData]
 }
 
-export const CalculateData = (data : any, date : any) => {
+export const CalculateData = (data : ResultsArrType, date : Date) => {
     const currentYear = date.getFullYear()
     const [currentYearData, prevYearData] = divideData(currentYear, data)
 

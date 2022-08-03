@@ -2,17 +2,20 @@ import React, {useState} from 'react'
 import { Link } from 'react-router-dom'
 import { useAuthContext } from '../../Context'
 import { LoaderOverlay } from '../../Components';
+import { errorType } from '../../types/Auth.types';
 
 function SignUp() {
 
-  const { signUp, isLoading } : any= useAuthContext()
+  const auth = useAuthContext();
+  const signUp  = auth?.signUp
+  const isLoading = auth?.isLoading
   const [email, setemail] = useState('');
   const [password, setpassword] = useState('')
   const [confirmpassword, setconfirmpassword] = useState('')
-  const [errorValues, seterrorValues] = useState<any>({})
+  const [errorValues, seterrorValues] = useState<errorType>({})
 
   const validateSubmit = () => {
-    const errors : any = {}
+    const errors : errorType = {}
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
 
     if(email.length === 0){
@@ -37,7 +40,9 @@ function SignUp() {
   const signUpHandler = () => {
     const errors = validateSubmit()
     if(Object.keys(errors).length === 0){
-      signUp({ email, password})
+      if(signUp){
+        signUp({ email, password})
+      }      
       setemail('')
       setpassword('')
       setconfirmpassword('')
@@ -55,17 +60,17 @@ function SignUp() {
           <div className="auth__section">
               <label className="auth-label form-label--required text--medium">Enter Email</label>
               <input value={email} onChange={(e)=> setemail(e.target.value)} type="text" className="form-field margin-tb--small" placeholder="abc@example.com"/>
-              <span className="error--message">{errorValues.email}</span>
+              <span className="error--message">{errorValues?.email}</span>
           </div>
           <div className="auth__section">
               <label className="auth-label form-label--required text--medium">Enter Password</label>
               <input value={password} onChange={(e)=> setpassword(e.target.value)} type="password" className="form-field margin-tb--small" placeholder="Password"/>
-              <span className="error--message">{errorValues.password}</span>
+              <span className="error--message">{errorValues?.password}</span>
           </div>
           <div className="auth__section">
               <label className="auth-label form-label--required text--medium">Confirm Password</label>
               <input value={confirmpassword} onChange={(e)=> setconfirmpassword(e.target.value)} type="password" className="form-field margin-tb--small" placeholder="Password"/>
-              <span className="error--message">{errorValues.confirmpassword}</span>
+              <span className="error--message">{errorValues?.confirmpassword}</span>
           </div>
           <div className="auth__description">
               <input type="checkbox" className="form-checkbox" /> 

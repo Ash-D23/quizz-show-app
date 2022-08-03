@@ -1,8 +1,9 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { ResultsType } from '../../types/AllQuiz.types';
 import './QuizResultCard.css'
 
-function QuizResultCard({ game: { id, name, score} } : any) {
+function QuizResultCard({ game: { id, name, score} } : { game: ResultsType}) {
 
   const navigate = useNavigate()
 

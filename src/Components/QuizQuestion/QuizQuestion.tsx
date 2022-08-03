@@ -10,7 +10,8 @@ function QuizQuestion() {
     quizGameMethods: {submitAnswer, selectAnswer}, 
   timerObj: {time, resetTimer}} : any = useQuizGameContext()
 
-  const { Theme } : any = useTheme()
+  const ThemeValue  = useTheme()
+  const Theme = ThemeValue?.Theme
   const navigate = useNavigate()
 
   const totalQuestions = questions.length
@@ -38,7 +39,7 @@ function QuizQuestion() {
             </div>
 
             <div className="container__answer margin--medium">
-                {options?.map((item : any, index : number)=>{
+                {options?.map((item : Array<string>, index : number)=>{
                     return (
                     <div onClick={()=> selectAnswer(index)} className={`answer ${currentSelectedOption===index ? `answer--selected` : 'answer--plain'}`}>
                         <p>{item}</p>

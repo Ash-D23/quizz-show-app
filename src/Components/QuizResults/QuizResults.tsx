@@ -1,5 +1,6 @@
 import React from 'react';
 import { useQuizGameContext, useTheme } from '../../Context';
+import { questionsType } from '../../types/AllQuiz.types';
 import ResultAnswer from '../ResultAnswer/ResultAnswer';
 import './QuizResults.css';
 
@@ -9,7 +10,8 @@ function QuizResults() {
 
     const totalquestions = questions.length
 
-    const { Theme } : any = useTheme()
+    const ThemeValue  = useTheme()
+    const Theme = ThemeValue?.Theme
 
   return (
     <div className={`container__flex--center padding--large ${ Theme === 'light' ? 'light__container' : ''}`}>
@@ -28,7 +30,7 @@ function QuizResults() {
             <div className="result--answers margin-tb--medium">
                 <h3 className="text--center margin--large">View Your Answers</h3>
 
-                {questions?.map((item : any, index : number)=>{
+                {questions?.map((item : questionsType, index : number)=>{
                     return (
                         <ResultAnswer key={index} totalquestions={totalquestions} questionnumber={index} question={item.name} quizoptions={item.options} answer={answers[index]} selectedanswer={selectedAnswers[index]} />
                     )

@@ -3,8 +3,17 @@ export type dataType = {
     password: string
 }
 
+export type userType = {
+    email: string,
+    firstName: string,
+    gender: string,
+    lastName: string,
+    uid: string,
+    userName: string
+}
+
 export type AuthType = {
-    user: any,
+    user: userType,
     setuser: any,
     signIn: (data: dataType) => Promise<void>,
     signUp: (data: dataType) => Promise<void>,

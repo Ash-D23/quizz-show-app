@@ -3,7 +3,8 @@ import { useTheme } from '../../Context';
 import './Loader.css';
 function Loader() {
 
-  const { Theme } : any = useTheme()
+  const ThemeValue  = useTheme()
+  const Theme = ThemeValue?.Theme
 
   return (
     <div className={`loader padding--small ${Theme==="dark" ? 'loader--dark': ''}`}>

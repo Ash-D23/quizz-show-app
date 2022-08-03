@@ -2,7 +2,8 @@ import React from 'react'
 import { useTheme } from '../../Context'
 
 function LoaderOverlay() {
-  const { Theme } : any = useTheme()
+  const ThemeValue  = useTheme()
+  const Theme = ThemeValue?.Theme
 
   return (
     <>

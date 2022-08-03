@@ -10,7 +10,9 @@ import { ToastContainer } from 'react-toastify';
 
 function App() {
 
-  const { user } : any = useAuthContext()
+  const auth = useAuthContext()
+
+  const user = auth?.user;
 
   const location : any = useLocation();
 

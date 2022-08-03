@@ -8,6 +8,7 @@ import {
   Legend,
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
+import { ResultsArrType } from '../../types/AllQuiz.types';
 import { CalculateData, CalculateLast6Months } from '../../Utilities';
 import './ActivityChart.css';
 
@@ -20,13 +21,13 @@ ChartJS.register(
   Legend
 );
 
-function ActivityChart({ results } : any) {
+function ActivityChart({ results } : { results: ResultsArrType }) {
   const currentDate = new Date()
 
   const labels = CalculateLast6Months(currentDate)
   const Formattedresults = CalculateData(results, currentDate)
 
-  const options: any = {
+  const options : any = {
     responsive: true,
     plugins: {
       legend: {

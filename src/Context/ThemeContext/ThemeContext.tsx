@@ -2,7 +2,13 @@ import { createContext, useContext, useEffect } from "react";
 import { useLocalStorage } from "../../hooks/LocalStorage";
 import { ThemeType } from "../../types/Theme.type";
 
-const ThemeContext = createContext<ThemeType | null>(null)
+const InitialTheme = { 
+    Theme: "dark",
+    setDarkMode: ()  => null, 
+    setLightMode: () => null
+   }
+
+const ThemeContext = createContext<ThemeType>(InitialTheme)
 
 const useTheme = () => useContext(ThemeContext)
 

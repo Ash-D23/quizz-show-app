@@ -3,9 +3,10 @@ import { CategoryCard, Loader } from '../../Components';
 import { Link } from 'react-router-dom';
 import { db } from '../../firebase';
 import './HomePage.css'
+import { CategoryArrType, CategoryType } from '../../types/AllQuiz.types';
 
 function HomePage() {
-  const [category, setcategory] = useState([])
+  const [category, setcategory] = useState<CategoryArrType>([])
   const [isLoading, setisLoading] = useState(false)
 
   useEffect(() => {
@@ -65,7 +66,7 @@ function HomePage() {
         </div>
         { isLoading && <Loader />}
         <div className="container__flex--center container__flex--wrap">
-            {category?.map((item: any)=>{
+            {category?.map((item: CategoryType)=>{
               return <CategoryCard key={item?.id} category={item} />
             })}
         </div>

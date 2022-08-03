@@ -2,15 +2,18 @@ import React, {useEffect, useState} from 'react';
 import { QuizResultCard, Loader, ActivityChart } from '../../Components';
 import { useAuthContext } from '../../Context';
 import { db } from '../../firebase';
+import { ResultsArrType, ResultsType } from '../../types/AllQuiz.types';
 import './Dashboard.css';
 
 function Dashboard() {
 
-  const [results, setresults] = useState([]);
+  const [results, setresults] = useState<ResultsArrType>([]);
   const [resultsLimit, setresultsLimit] = useState(5)
   const [isLoading, setisLoading] = useState(false);
 
-  const { user } : any = useAuthContext();
+  const auth = useAuthContext()
+
+  const user = auth?.user;
 
   useEffect(() => {
     (async function(){
@@ -18,7 +21,7 @@ function Dashboard() {
         try{
           const dashboard = db.ref('/results/'+user?.uid);
           const snapshot = await dashboard.once('value');
-          const value : any = Object.values(snapshot.val())
+          const value : ResultsArrType = Object.values(snapshot.val())
           setresults(value.reverse())
         }catch(err){
           console.error(err)
@@ -29,8 +32,8 @@ function Dashboard() {
   }, [])
 
   const gamesPalyed = results?.length || 0;
-  const totalScore = results?.reduce((acc,curr : any) => acc+curr.score, 0) || 0
-  const highScore = results?.reduce((acc,curr: any) => curr.score > acc ? curr.score : acc, 0) || 0
+  const totalScore = results?.reduce((acc,curr : ResultsType) => acc+curr.score, 0) || 0
+  const highScore = results?.reduce((acc,curr: ResultsType) => curr.score > acc ? curr.score : acc, 0) || 0
 
   const ShowLoadButton = () => {
     const len = results.length

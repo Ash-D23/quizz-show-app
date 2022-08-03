@@ -3,7 +3,8 @@ import { useTheme } from "../../Context"
 
 function ResultAnswer({totalquestions, questionnumber, question, quizoptions, answer, selectedanswer} : any){
 
-    const { Theme } : any = useTheme()
+    const ThemeValue  = useTheme()
+    const Theme = ThemeValue?.Theme
     
     return (
         <div className={`result__answer border--grey padding--medium margin-tb--medium ${ Theme === 'light' ? 'light__content' : ''}`}>   
@@ -18,7 +19,7 @@ function ResultAnswer({totalquestions, questionnumber, question, quizoptions, an
 
             <div className="container__answer margin--medium">
                 {
-                    quizoptions?.map((item : any, index : number)=>{
+                    quizoptions?.map((item : string, index : number)=>{
                         let optionstyle = null
                         if(index === selectedanswer){
                             optionstyle = selectedanswer === answer ? "answer--success" : "answer--wrong"

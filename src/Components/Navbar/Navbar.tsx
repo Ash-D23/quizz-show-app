@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuthContext, useTheme } from '../../Context';
 import { db } from '../../firebase';
+import { GamesArrType, GamesType } from '../../types/AllQuiz.types';
 import './Navbar.css'
 
 function Navbar() {
@@ -10,8 +11,14 @@ function Navbar() {
     const [showSearchItems, setShowSearchItems] = useState(false)
     const [Games, setGames] = useState([])
 
-    const { Theme, setDarkMode, setLightMode } : any = useTheme()
-    const { user, signOut } : any = useAuthContext()
+    const ThemeValue  = useTheme()
+    const Theme = ThemeValue?.Theme
+    const setDarkMode = ThemeValue?.setDarkMode
+    const setLightMode = ThemeValue?.setLightMode
+
+    const auth = useAuthContext()
+    const user = auth?.user;
+    const signOut = auth?.signOut
 
     const searchInput : any = useRef(null)
     const searchInputMobile : any = useRef(null)
@@ -70,7 +77,7 @@ function Navbar() {
         setShowSearchItems(false)
     }
 
-    const handleNavigate = (id : string) => {
+    const handleNavigate = (id : number) => {
         handleClear()
         navigate('/quizgame/'+id)
     }
@@ -80,12 +87,12 @@ function Navbar() {
         navigate('/login')
     }
 
-    const filterGamesBySearch = (Games : any, search : string) => {
+    const filterGamesBySearch = (Games : GamesArrType, search : string) => {
         if(search === null){
             return Games
         }
     
-        return Games.filter((item : any) => item?.name?.toLowerCase().includes(search.toLowerCase() ))
+        return Games?.filter((item : GamesType) => item?.name?.toLowerCase().includes(search.toLowerCase() ))
     }
         
     const SearchGames = filterGamesBySearch(Games, search)
@@ -117,14 +124,14 @@ function Navbar() {
                         />
                         { showSearchItems ? <i onClick={handleClear} className="fas fa-times padding--small text--medium pointer"></i> : null }
                     </div>
-                    { SearchGames.length === 0 ? 
+                    { SearchGames?.length === 0 ? 
                     <div style={{ height: `2rem`}}
                     className={`search__items ${ showSearchItems ? `search__items--display` : ''}`}>
                        <p className='search__items--list text--center'>No videos Found</p>
                    </div>
-                    : <div style={{ height: `${2 + SearchGames.length*2}rem`}}
+                    : <div style={{ height: `${SearchGames ? 2 + SearchGames.length*2 : 0}rem`}}
                      className={`search__items ${ showSearchItems ? `search__items--display` : ''}`}>
-                        {SearchGames?.map((item : any) => <p key={item?.id} onClick={(e) => handleNavigate(item?.id)} className='search__items--list'>{item.name}</p>)}
+                        {SearchGames?.map((item : GamesType) => <p key={item?.id} onClick={(e) => handleNavigate(item?.id)} className='search__items--list'>{item.name}</p>)}
                     </div>}
             </div>
             <ul className={`navbar__list-container ${showmenu ? 'navbar__display': null}`}>
@@ -148,7 +155,9 @@ function Navbar() {
                 { !user ? <button onClick={navigateToLogin} className='btn btn--light margin--medium'>Login</button> : 
                 <button onClick={()=> {
                     closeMenu()
-                    signOut()
+                    if(signOut){
+                        signOut()
+                    }
                 }} className='btn btn--light margin--medium'>Logout</button> }
             </ul>
         </div>
@@ -167,12 +176,12 @@ function Navbar() {
                       />
                     { showSearchItems ? <i onClick={handleClear} className={`fas fa-times padding--small text--medium pointer ${ Theme === "light" ? 'clr--secondary': ''} pointer`}></i> : null }
               </div>
-              { SearchGames.length === 0 ? 
+              { SearchGames?.length === 0 ? 
                     <div style={{ height: `2rem`}}
                     className={`search__items ${ showSearchItems ? `search__items--mobiledisplay` : ''}`}>
                        <p className='search__items--list text--center text--light'>No videos Found</p>
                    </div>
-                    : <div style={{ height: `${2 + SearchGames.length*2}rem`}}
+                    : <div style={{ height: `${SearchGames ? 2 + SearchGames.length*2 : 0}rem`}}
                      className={`search__items ${ showSearchItems ? `search__items--mobiledisplay` : ''}`}>
                         {SearchGames?.map((item : any) => <p key={item?.id}  onClick={(e) => handleNavigate(item?.id)} className='search__items--list'>{item.name}</p>)}
               </div>}
