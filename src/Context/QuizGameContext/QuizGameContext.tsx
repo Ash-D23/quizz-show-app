@@ -2,7 +2,6 @@ import { createContext, useContext, useReducer, useEffect } from "react";
 import useTimer from "../../hooks/timer";
 import { db } from '../../firebase';
 import { useAuthContext } from "../AuthContext/AuthContext";
-import { QuizGameActions } from "../../Utilities";
 import { QuizGameInitialState, QuizGamereducerfn } from "../../Reducers";
 import { QuizGameType } from "../../types/QuizGame.types";
 
@@ -27,7 +26,7 @@ const QuizGameProvider = ({ children }: { children: React.ReactNode }) => {
     }, [time])
 
     const CalculateScoreandShowResults = async ()=>{
-        quizGameDispatch({ type: QuizGameActions.GAME_STATE, payload: { gameState: 'loading'} })
+        quizGameDispatch({ type: "gameState", payload: { gameState: 'loading'} })
 
         const { answers } = quizGameState
         const finalselectedAnswers = [...quizGameState.selectedAnswers, quizGameState.currentSelectedOption]
@@ -54,7 +53,7 @@ const QuizGameProvider = ({ children }: { children: React.ReactNode }) => {
 
             await resultRef.push().set(item)
 
-            quizGameDispatch({type: QuizGameActions.SUBMIT_ANSWER_AND_FINISH, 
+            quizGameDispatch({type: "submitAnswerAndFinish", 
             payload: { selectedAnswers: finalselectedAnswers, score: finalScore}})
         }catch(err){
             console.error(err)
@@ -66,14 +65,14 @@ const QuizGameProvider = ({ children }: { children: React.ReactNode }) => {
             CalculateScoreandShowResults()
             stopTimer()
         }else{
-            quizGameDispatch({ type: QuizGameActions.SUBMIT_ANSWER})
+            quizGameDispatch({ type:  "submitAnswer", payload: null})
             resetTimer()
             startTimer()
         }
     }
 
     const selectAnswer = (selectedAnswer : string)=>{
-        quizGameDispatch({ type: QuizGameActions.SELECT_ANSWER, payload: selectedAnswer})
+        quizGameDispatch({ type: "selectAnswer", payload: selectedAnswer})
     }
 
     return <QuizGameContext.Provider value={{ quizGameState, quizGameMethods: {

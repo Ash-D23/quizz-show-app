@@ -3,7 +3,7 @@ export type QuizGameType = {
   quizGameMethods: { 
     submitAnswer: () => void,
     selectAnswer: (selectedAnswer: string) => void },
-    quizGameDispatch: React.Dispatch<any>,
+    quizGameDispatch: any,
     timerObj: { 
       time: number,
       startTimer: () => void, 

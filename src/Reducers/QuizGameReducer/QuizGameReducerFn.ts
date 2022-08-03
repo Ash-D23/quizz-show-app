@@ -1,18 +1,19 @@
+import { QuizAction, QuizGameStateType } from "../../types/QuizGameReducer.types"
 import { QuizGameActions } from "../../Utilities"
 
-export const QuizGameInitialState = {
-    id: null,
-    name: null,
+export const QuizGameInitialState : QuizGameStateType = {
+    id: "",
+    name: "",
     questions: [],
     answers: [],
     loading: false,
     currentQuestion: 0,
-    currentSelectedOption: null,
+    currentSelectedOption: 0,
     selectedAnswers: [], 
     gameState: "loading"
-}
+} 
 
-export const QuizGamereducerfn = (state : any, action : any)=> {
+export const QuizGamereducerfn = (state : any , action : QuizAction) => {
     switch (action.type){
         case QuizGameActions.SET_QUIZ_DATA:
             return {...state,
@@ -33,7 +34,7 @@ export const QuizGamereducerfn = (state : any, action : any)=> {
                     selectedAnswers: action.payload.selectedAnswers, 
                     currentSelectedOption: null,
                     gameState: 'results',
-                     score: action.payload.score}
+                    score: action.payload.score}
         case QuizGameActions.GAME_STATE:
             return { ...state, 
                     gameState: action.payload.gameState}
