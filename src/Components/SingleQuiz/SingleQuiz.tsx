@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { GamesType, ResultsType } from '../../types/AllQuiz.types'
+import { GamesType } from '../../types/AllQuiz.types'
 import './SingleQuiz.css'
 
 function SingleQuiz({ game, result } : { game: GamesType, result: Boolean | null }) {
