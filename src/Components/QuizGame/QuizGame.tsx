@@ -11,7 +11,11 @@ import { QuizGameType } from '../../types/QuizGame.types';
 
 function QuizGame({ gameid } : { gameid: string | undefined}) {
 
-  const { quizGameState: { gameState }, quizGameDispatch, timerObj: {startTimer} } : any = useQuizGameContext()
+  const quiz = useQuizGameContext()
+
+  const gameState = quiz?.quizGameState.gameState
+  const quizGameDispatch = quiz?.quizGameDispatch
+  const startTimer = quiz?.timerObj.startTimer
 
   const navigate = useNavigate();
 

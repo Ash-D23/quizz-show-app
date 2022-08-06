@@ -6,15 +6,23 @@ import './QuizQuestion.css'
 
 function QuizQuestion() {
 
-  const { quizGameState: {name, currentQuestion, questions, currentSelectedOption}, 
-    quizGameMethods: {submitAnswer, selectAnswer}, 
-  timerObj: {time, resetTimer}} : any = useQuizGameContext()
+  const quiz = useQuizGameContext()
+  const name = quiz?.quizGameState.name
+  const currentQuestion = quiz?.quizGameState.currentQuestion || 0
+  const questions = quiz?.quizGameState.questions
+  const currentSelectedOption = quiz?.quizGameState.currentSelectedOption
+
+  const submitAnswer = quiz?.quizGameMethods.submitAnswer
+  const selectAnswer = quiz?.quizGameMethods.selectAnswer
+
+  const time = quiz?.timerObj.time
+  const resetTimer = quiz?.timerObj.resetTimer
 
   const ThemeValue  = useTheme()
   const Theme = ThemeValue?.Theme
   const navigate = useNavigate()
 
-  const totalQuestions = questions.length
+  const totalQuestions = questions?.length
   const question = questions.length ? questions[currentQuestion]?.name : null
   const options =  questions.length ? questions[currentQuestion]?.options : []
 
@@ -39,7 +47,7 @@ function QuizQuestion() {
             </div>
 
             <div className="container__answer margin--medium">
-                {options?.map((item : Array<string>, index : number)=>{
+                {options?.map((item : string, index : number)=>{
                     return (
                     <div onClick={()=> selectAnswer(index)} className={`answer ${currentSelectedOption===index ? `answer--selected` : 'answer--plain'}`}>
                         <p>{item}</p>

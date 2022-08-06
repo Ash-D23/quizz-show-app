@@ -1,8 +1,10 @@
+import { QuizGameStateType } from "./QuizGameReducer.types"
+
 export type QuizGameType = { 
-  quizGameState: string,
+  quizGameState: QuizGameStateType,
   quizGameMethods: { 
     submitAnswer: () => void,
-    selectAnswer: (selectedAnswer: string) => void },
+    selectAnswer: (selectedAnswer: number) => void },
     quizGameDispatch: any,
     timerObj: { 
       time: number,

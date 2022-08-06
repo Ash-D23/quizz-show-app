@@ -5,7 +5,29 @@ import { useAuthContext } from "../AuthContext/AuthContext";
 import { QuizGameInitialState, QuizGamereducerfn } from "../../Reducers";
 import { QuizGameType } from "../../types/QuizGame.types";
 
-const QuizGameContext = createContext<QuizGameType | null>(null);
+const QuizGameContext = createContext<QuizGameType>({ 
+    quizGameState: {
+        id: "",
+        name: "" ,
+        questions: [],
+        answers: [],
+        loading: false,
+        currentQuestion: 1,
+        currentSelectedOption: 0 ,
+        selectedAnswers: [], 
+        gameState: ""
+    },
+    quizGameMethods: { 
+      submitAnswer: () => null,
+      selectAnswer: () => null },
+      quizGameDispatch: null,
+      timerObj: { 
+        time: 0,
+        startTimer: () => null, 
+        stopTimer: () => null,
+        resetTimer: () => null 
+      }
+  });
 
 const useQuizGameContext = () => useContext(QuizGameContext)
 
@@ -71,7 +93,7 @@ const QuizGameProvider = ({ children }: { children: React.ReactNode }) => {
         }
     }
 
-    const selectAnswer = (selectedAnswer : string)=>{
+    const selectAnswer = (selectedAnswer : number)=>{
         quizGameDispatch({ type: "selectAnswer", payload: selectedAnswer})
     }
 

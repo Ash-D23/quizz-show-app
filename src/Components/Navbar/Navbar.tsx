@@ -20,8 +20,8 @@ function Navbar() {
     const user = auth?.user;
     const signOut = auth?.signOut
 
-    const searchInput : any = useRef(null)
-    const searchInputMobile : any = useRef(null)
+    const searchInput = useRef<HTMLInputElement>(null)
+    const searchInputMobile = useRef<HTMLInputElement>(null)
 
     let navigate = useNavigate()
 
@@ -183,7 +183,7 @@ function Navbar() {
                    </div>
                     : <div style={{ height: `${SearchGames ? 2 + SearchGames.length*2 : 0}rem`}}
                      className={`search__items ${ showSearchItems ? `search__items--mobiledisplay` : ''}`}>
-                        {SearchGames?.map((item : any) => <p key={item?.id}  onClick={(e) => handleNavigate(item?.id)} className='search__items--list'>{item.name}</p>)}
+                        {SearchGames?.map((item : GamesType) => <p key={item?.id}  onClick={(e) => handleNavigate(item?.id)} className='search__items--list'>{item.name}</p>)}
               </div>}
           </div>
     </div>
