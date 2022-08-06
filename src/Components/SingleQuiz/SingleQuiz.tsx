@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { GamesType, ResultsType } from '../../types/AllQuiz.types'
 import './SingleQuiz.css'
 
-function SingleQuiz({ game, result } : { game: any, result: Boolean | null }) {
+function SingleQuiz({ game, result } : { game: GamesType, result: Boolean | null }) {
 
   const navigate = useNavigate()
   
@@ -11,7 +11,6 @@ function SingleQuiz({ game, result } : { game: any, result: Boolean | null }) {
     <div onClick={()=> navigate('/quizgame/'+game?.id)} className="card quiz--card margin--medium">
         <div className="card__image--container container--relative">
           <img className="card__image" src={game?.img} alt="single quiz" />
-          { result ? <p className="text--large quiz--score">Score: {game?.score}</p> : null}
         </div>
         <div className="card__body background--light padding--medium">
             
