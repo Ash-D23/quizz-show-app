@@ -15,7 +15,8 @@ const QuizGameContext = createContext<QuizGameType>({
         currentQuestion: 1,
         currentSelectedOption: 0 ,
         selectedAnswers: [], 
-        gameState: ""
+        gameState: "",
+        score: 0
     },
     quizGameMethods: { 
       submitAnswer: () => null,

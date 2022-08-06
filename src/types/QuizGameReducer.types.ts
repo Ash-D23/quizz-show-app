@@ -9,7 +9,8 @@ export type QuizGameStateType ={
     currentQuestion: number,
     currentSelectedOption: number ,
     selectedAnswers: Array<number>, 
-    gameState: string
+    gameState: string,
+    score: number
 }
 
 export type QuizAction =

@@ -10,7 +10,8 @@ export const QuizGameInitialState : QuizGameStateType = {
     currentQuestion: 0,
     currentSelectedOption: 0,
     selectedAnswers: [], 
-    gameState: "loading"
+    gameState: "loading",
+    score: 0
 } 
 
 export const QuizGamereducerfn = (state : any , action : QuizAction) => {

@@ -6,7 +6,14 @@ import './QuizResults.css';
 
 function QuizResults() {
 
-    const { quizGameState: { id, name, questions, answers, selectedAnswers, score } } : any = useQuizGameContext()
+    const quiz = useQuizGameContext()
+
+    const id = quiz.quizGameState.id
+    const name = quiz.quizGameState.name
+    const questions = quiz.quizGameState.questions
+    const answers = quiz.quizGameState.answers
+    const selectedAnswers = quiz.quizGameState.selectedAnswers
+    const score = quiz.quizGameState.score
 
     const totalquestions = questions.length
 

@@ -1,7 +1,7 @@
 import { useTheme } from "../../Context"
 
 
-function ResultAnswer({totalquestions, questionnumber, question, quizoptions, answer, selectedanswer} : any){
+function ResultAnswer({totalquestions, questionnumber, question, quizoptions, answer, selectedanswer} : {totalquestions : number, questionnumber : number, question : string, quizoptions : Array<string>, answer: number, selectedanswer: number}){
 
     const ThemeValue  = useTheme()
     const Theme = ThemeValue?.Theme
