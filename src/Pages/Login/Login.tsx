@@ -12,10 +12,10 @@ function Login() {
   const isLoading = auth?.isLoading
   const [email, setemail] = useState('');
   const [password, setpassword] = useState('')
-  const [errorValues, seterrorValues] = useState<errorType>({})
+  const [errorValues, seterrorValues] = useState<errorType>({} as errorType)
 
   const validateSubmit = () => {
-    const errors : errorType = {}
+    const errors = {} as errorType
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
 
     if(email.length === 0){
@@ -39,7 +39,7 @@ function Login() {
       }
       setemail('')
       setpassword('')
-      seterrorValues(null)
+      seterrorValues({} as errorType)
     }else{
       seterrorValues(errors)
     }
