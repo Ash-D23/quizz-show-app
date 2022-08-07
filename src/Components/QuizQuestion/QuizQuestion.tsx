@@ -49,7 +49,7 @@ function QuizQuestion() {
             <div className="container__answer margin--medium">
                 {options?.map((item : string, index : number)=>{
                     return (
-                    <div onClick={()=> selectAnswer(index)} className={`answer ${currentSelectedOption===index ? `answer--selected` : 'answer--plain'}`}>
+                    <div key={index} onClick={()=> selectAnswer(index)} className={`answer ${currentSelectedOption===index ? `answer--selected` : 'answer--plain'}`}>
                         <p>{item}</p>
                     </div> )
                 })}

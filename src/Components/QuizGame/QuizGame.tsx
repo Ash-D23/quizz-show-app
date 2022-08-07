@@ -4,10 +4,8 @@ import QuizQuestion from '../QuizQuestion/QuizQuestion';
 import QuizResults from '../QuizResults/QuizResults';
 import { db } from '../../firebase';
 import QuizRules from '../QuizRules/QuizRules';
-import { QuizGameActions } from '../../Utilities';
 import { Loader } from '../Loader/Loader';
 import { useNavigate } from 'react-router-dom';
-import { QuizGameType } from '../../types/QuizGame.types';
 
 function QuizGame({ gameid } : { gameid: string | undefined}) {
 
@@ -27,14 +25,21 @@ function QuizGame({ gameid } : { gameid: string | undefined}) {
         if(!value){
           navigate('/notfound')
         }
-        quizGameDispatch({ type: QuizGameActions.SET_QUIZ_DATA, payload: value})
+
+        if(quizGameDispatch){
+          quizGameDispatch({ type: "setQuizData", payload: value})
+        }
+        
       }catch(err){
         console.error(err)
       }
   }
 
   const startGame = () => {
-    quizGameDispatch({ type: QuizGameActions.GAME_STATE, payload: {gameState: "game"}})
+    if(quizGameDispatch){
+      quizGameDispatch({ type: "gameState", payload: {gameState: "game"}})
+    }
+    
     startTimer()
   }
 

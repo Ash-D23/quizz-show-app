@@ -1,3 +1,6 @@
+import { Dispatch } from 'react';
+import { UserType } from './Auth.types';
+
 export type dataType = {
     email: string,
     password: string
@@ -14,7 +17,7 @@ export type userType = {
 
 export type AuthType = {
     user: userType,
-    setuser: any,
+    setuser: Dispatch<UserType>,
     signIn: (data: dataType) => Promise<void>,
     signUp: (data: dataType) => Promise<void>,
     signOut: () => Promise<void>,

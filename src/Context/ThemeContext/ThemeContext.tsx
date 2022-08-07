@@ -4,7 +4,7 @@ import { ThemeType } from "../../types/Theme.type";
 
 const InitialTheme = { 
     Theme: "dark",
-    setDarkMode: ()  => null, 
+    setDarkMode: () => null, 
     setLightMode: () => null
    }
 
