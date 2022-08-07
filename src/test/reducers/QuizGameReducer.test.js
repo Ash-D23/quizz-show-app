@@ -43,7 +43,8 @@ describe("testing Quiz Game reducer", () => {
             currentQuestion: 0,
             currentSelectedOption: 0,
             selectedAnswers: [],
-            gameState: 'rules'
+            gameState: 'rules',
+            score: 0
           }
 
         let state = QuizGamereducerfn(QuizGameInitialState, action)
