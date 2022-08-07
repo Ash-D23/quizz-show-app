@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react'
 import { useSearchParams } from 'react-router-dom';
 import { SingleQuiz, Loader } from '../../Components/';
 import { db } from '../../firebase';
-import { CategoryParamType, GamesArrType, GamesType, SearchParamType } from '../../types/AllQuiz.types';
+import { CategoryParamType, GamesType, SearchParamType } from '../../types/AllQuiz.types';
+import { filterbyCategory, filterbySearch } from '../../Utilities';
 import './AllQuizPage.css'
 
 function AllQuizPage() {
@@ -26,20 +27,6 @@ function AllQuizPage() {
     })()
     
   }, [])
-
-  const filterbyCategory = (arr : GamesArrType, category: CategoryParamType) => {
-    if(!category){
-      return arr
-    }
-    return arr?.filter((item : GamesType) => item.category === parseInt(category))
-  }
-
-  const filterbySearch = (arr : GamesArrType, search: SearchParamType) => {
-    if(!search){
-      return arr
-    }
-    return arr?.filter((item : GamesType) => item.name.toLowerCase().includes(search.toLowerCase()))
-  }
 
   const filterGames = () => {
     const category : CategoryParamType  = searchParams.get('category')
