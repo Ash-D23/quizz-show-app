@@ -3,7 +3,7 @@ import { YearData } from "../types/Last6Months.types"
 
 const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"]
 
-export const CalculateLast6Months = (date : Date) => {
+export const CalculateLast6Months = (date : Date) : string[] => {
     const currentMonth = date.getMonth()
 
     let i=6, temp = currentMonth
@@ -23,7 +23,7 @@ export const CalculateLast6Months = (date : Date) => {
     return labels.reverse().map((item) => months[item])
   }
 
-const divideData = (currentYear : number, data : ResultsArrType) => {
+const divideData = (currentYear : number, data : ResultsArrType) : YearData[] => {
     const currentYearData = {} as YearData
     const prevYearData = {} as YearData
 

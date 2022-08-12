@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { ResultsType } from '../../types/AllQuiz.types';
 import './QuizResultCard.css'
 
-function QuizResultCard({ game: { id, name, score} } : { game: ResultsType}) {
+function QuizResultCard({ game: { id, name, score} } : { game: ResultsType}) : JSX.Element {
 
   const navigate = useNavigate()
 

@@ -3,9 +3,9 @@ import { auth } from "../firebase"
 import { db } from '../firebase';
 import { toasterror, toastsuccess } from "../Utilities/ToastMessage";
 import { useEffect, useState } from "react";
-import { dataType } from "../types/AuthContext.types";
+import { AuthType, dataType } from "../types/AuthContext.types";
 
-export const useAuth = () => {
+export const useAuth = () : AuthType => {
     
     const [user, setuser] = useLocalStorage("user", null);
     const [isLoading, setisLoading] = useState(false)

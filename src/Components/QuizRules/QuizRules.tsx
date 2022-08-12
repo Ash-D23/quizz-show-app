@@ -2,7 +2,7 @@ import React from 'react';
 import { useTheme } from '../../Context';
 import './QuizRules.css';
 
-function QuizRules({ start } : { start : () => void}) {
+function QuizRules({ start } : { start : () => void}) : JSX.Element {
 
   const ThemeValue  = useTheme()
   const Theme = ThemeValue?.Theme

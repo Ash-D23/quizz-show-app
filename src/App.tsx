@@ -8,7 +8,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import "./App.css";
 import { ToastContainer } from 'react-toastify';
 
-function App() {
+function App() : JSX.Element {
 
   const auth = useAuthContext()
 

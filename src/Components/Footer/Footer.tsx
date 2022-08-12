@@ -1,7 +1,7 @@
 import React from 'react';
 import './Footer.css';
 
-function Footer() {
+function Footer() : JSX.Element {
   return (
     <footer className="footer__container padding--medium">
         <div className="margin-tb--large">

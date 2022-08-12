@@ -12,7 +12,7 @@ const ThemeContext = createContext<ThemeType>(InitialTheme)
 
 const useTheme = () => useContext(ThemeContext)
 
-const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
+const ThemeProvider = ({ children }: { children: JSX.Element }) : JSX.Element => {
 
     const [Theme, setTheme] = useLocalStorage('theme', 'dark');
 

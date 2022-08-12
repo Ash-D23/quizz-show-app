@@ -5,7 +5,7 @@ import { LoaderOverlay } from '../../Components';
 import './Auth.css';
 import { errorType } from '../../types/Auth.types';
 
-function Login() {
+function Login() : JSX.Element {
 
   const auth = useAuthContext();
   const signIn  = auth?.signIn

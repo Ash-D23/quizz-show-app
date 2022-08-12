@@ -6,7 +6,7 @@ import { CategoryParamType, GamesType, SearchParamType } from '../../types/AllQu
 import { filterbyCategory, filterbySearch } from '../../Utilities';
 import './AllQuizPage.css'
 
-function AllQuizPage() {
+function AllQuizPage() : JSX.Element{
 
   const [games, setgames] = useState(null)
   const [isLoading, setisLoading] = useState(true)

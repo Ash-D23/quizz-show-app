@@ -4,7 +4,7 @@ import { questionsType } from '../../types/AllQuiz.types';
 import ResultAnswer from '../ResultAnswer/ResultAnswer';
 import './QuizResults.css';
 
-function QuizResults() {
+function QuizResults() : JSX.Element {
 
     const quiz = useQuizGameContext()
 

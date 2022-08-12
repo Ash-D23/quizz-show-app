@@ -4,7 +4,7 @@ import { useAuthContext } from '../../Context'
 import { LoaderOverlay } from '../../Components';
 import { errorType } from '../../types/Auth.types';
 
-function SignUp() {
+function SignUp() : JSX.Element {
 
   const auth = useAuthContext();
   const signUp  = auth?.signUp

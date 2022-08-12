@@ -2,7 +2,7 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { CategoryType } from '../../types/AllQuiz.types';
 
-function CategoryCard({ category: {id, imgurl, name}} : { category: CategoryType}) {
+function CategoryCard({ category: {id, imgurl, name}} : { category: CategoryType}) : JSX.Element {
 
   const navigate = useNavigate();
 

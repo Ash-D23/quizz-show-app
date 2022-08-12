@@ -4,7 +4,7 @@ import { useQuizGameContext, useTheme } from '../../Context'
 import { toastsuccess } from '../../Utilities'
 import './QuizQuestion.css'
 
-function QuizQuestion() {
+function QuizQuestion() : JSX.Element {
 
   const quiz = useQuizGameContext()
   const name = quiz?.quizGameState.name

@@ -5,7 +5,7 @@ import { db } from '../../firebase';
 import { GamesArrType, GamesType } from '../../types/AllQuiz.types';
 import './Navbar.css'
 
-function Navbar() {
+function Navbar() : JSX.Element {
     const [showmenu, setshowmenu] = useState(false)
     const [search, setSearch] = useState('')
     const [showSearchItems, setShowSearchItems] = useState(false)

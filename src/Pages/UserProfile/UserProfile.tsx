@@ -1,11 +1,11 @@
 import React, { useState, useReducer } from 'react';
 import { useAuthContext } from '../../Context';
 import { userProfileReducerFn } from '../../Reducers';
-import { toastsuccess, toasterror, USER_PROFILE_ACTIONS } from '../../Utilities';
+import { toastsuccess, toasterror } from '../../Utilities';
 import { db } from '../../firebase';
 import './UserProfile.css';
 
-function UserProfile() {
+function UserProfile() : JSX.Element {
 
   const [editmode, seteditmode] = useState(false)
 

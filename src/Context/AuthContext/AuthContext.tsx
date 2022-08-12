@@ -6,7 +6,7 @@ const AuthContext = createContext<AuthType | null>(null)
 
 const useAuthContext = () => useContext(AuthContext)
 
-const AuthProvider = ({ children }: { children: React.ReactNode }) => {
+const AuthProvider = ({ children }: { children: React.ReactNode }) : JSX.Element => {
 
     const auth = useAuth()
 

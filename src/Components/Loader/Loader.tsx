@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTheme } from '../../Context';
 import './Loader.css';
-function Loader() {
+function Loader() : JSX.Element {
 
   const ThemeValue  = useTheme()
   const Theme = ThemeValue?.Theme

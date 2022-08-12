@@ -21,7 +21,7 @@ ChartJS.register(
   Legend
 );
 
-function ActivityChart({ results } : { results: ResultsArrType }) {
+function ActivityChart({ results } : { results: ResultsArrType }) : JSX.Element {
   const currentDate = new Date()
 
   const labels = CalculateLast6Months(currentDate)

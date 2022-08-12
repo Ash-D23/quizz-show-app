@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { GamesType } from '../../types/AllQuiz.types'
 import './SingleQuiz.css'
 
-function SingleQuiz({ game, result } : { game: GamesType, result: Boolean | null }) {
+function SingleQuiz({ game, result } : { game: GamesType, result: Boolean | null }) : JSX.Element {
 
   const navigate = useNavigate()
   

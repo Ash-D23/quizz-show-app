@@ -5,7 +5,7 @@ import { db } from '../../firebase';
 import { ResultsArrType, ResultsType } from '../../types/AllQuiz.types';
 import './Dashboard.css';
 
-function Dashboard() {
+function Dashboard() : JSX.Element {
 
   const [results, setresults] = useState<ResultsArrType>([]);
   const [resultsLimit, setresultsLimit] = useState(5)

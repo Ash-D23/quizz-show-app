@@ -7,7 +7,7 @@ import QuizRules from '../QuizRules/QuizRules';
 import { Loader } from '../Loader/Loader';
 import { useNavigate } from 'react-router-dom';
 
-function QuizGame({ gameid } : { gameid: string | undefined}) {
+function QuizGame({ gameid } : { gameid: string | undefined}) : JSX.Element {
 
   const quiz = useQuizGameContext()
 

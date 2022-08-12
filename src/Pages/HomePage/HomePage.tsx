@@ -5,7 +5,7 @@ import { db } from '../../firebase';
 import './HomePage.css'
 import { CategoryArrType, CategoryType } from '../../types/AllQuiz.types';
 
-function HomePage() {
+function HomePage() : JSX.Element {
   const [category, setcategory] = useState<CategoryArrType>([])
   const [isLoading, setisLoading] = useState(false)
 

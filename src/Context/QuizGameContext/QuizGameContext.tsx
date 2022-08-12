@@ -32,7 +32,7 @@ const QuizGameContext = createContext<QuizGameType>({
 
 const useQuizGameContext = () => useContext(QuizGameContext)
 
-const QuizGameProvider = ({ children }: { children: React.ReactNode }) => {
+const QuizGameProvider = ({ children }: { children: JSX.Element }) : JSX.Element => {
 
     const [ quizGameState, quizGameDispatch ] = useReducer(QuizGamereducerfn, QuizGameInitialState)
 

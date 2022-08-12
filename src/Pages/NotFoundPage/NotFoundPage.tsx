@@ -1,7 +1,7 @@
 import React from 'react';
 import './NotFoundPage.css';
 
-function NotFoundPage() {
+function NotFoundPage() : JSX.Element {
   return (
     <div className="not-found--container">
         <div className='not-found--content'>
